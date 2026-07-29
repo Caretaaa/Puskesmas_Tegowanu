@@ -595,18 +595,10 @@
         <div class="time">24 JAM</div>
       </div>
       
-      <!-- Update: Jam Pelayanan Day-by-Day -->
-      <div class="sched-row" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+      <!-- Jam Pelayanan Otomatis menyesuaikan hari ini -->
+      <div class="sched-row">
         <div class="label">Jam Pelayanan<small>Poli umum, KIA, gigi, dll.</small></div>
-        <div style="width: 100%; display: flex; flex-direction: column; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--teal-700);">
-          <div style="display: flex; justify-content: space-between;"><span>Senin</span><span>07.30 WIB – 13.00 WIB</span></div>
-          <div style="display: flex; justify-content: space-between;"><span>Selasa</span><span>07.30 WIB – 13.00 WIB</span></div>
-          <div style="display: flex; justify-content: space-between;"><span>Rabu</span><span>07.30 WIB – 13.00 WIB</span></div>
-          <div style="display: flex; justify-content: space-between;"><span>Kamis</span><span>07.30 WIB – 13.00 WIB</span></div>
-          <div style="display: flex; justify-content: space-between;"><span>Jumat</span><span>07.30 WIB – 11.00 WIB</span></div>
-          <div style="display: flex; justify-content: space-between;"><span>Sabtu</span><span>07.30 WIB – 12.00 WIB</span></div>
-          <div style="display: flex; justify-content: space-between;"><span>Minggu</span><span style="color: #9A5A17;">Libur</span></div>
-        </div>
+        <div class="time" id="todaySchedule">--.-- – --.-- WIB</div>
       </div>
 
       <div class="emergency-strip">
@@ -851,7 +843,7 @@ kemandirian masyarakat untuk berperilaku hidup bersih dan sehat"</p>
         </div>
         <div class="kinfo-row">
           <div class="ic">🕒</div>
-          <!-- Update Jam Pelayanan di Kontak -->
+          <!-- Ringkasan Jam Pelayanan di Kontak tetap dipertahankan karena lebih rapi di sini -->
           <div class="t"><strong>Jam Pelayanan</strong><span>UGD 24 Jam · Senin-Kamis 07.30-13.00, Jumat 07.30-11.00, Sabtu 07.30-12.00</span></div>
         </div>
       </div>
@@ -982,9 +974,20 @@ kemandirian masyarakat untuk berperilaku hidup bersih dan sehat"</p>
     });
   });
 
-  // Live clock + status board (LOGIKA JADWAL DIPERBARUI)
+  // Live clock + Status board + Jam Pelayanan Dinamis
   const hariNama = ['Minggu','Senin','Selasa','Rabu','Kamis',"Jum'at",'Sabtu'];
   const bulanNama = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+  
+  // Data Jadwal per hari
+  const jadwalHarian = {
+    0: 'Libur',
+    1: '07.30 – 13.00 WIB',
+    2: '07.30 – 13.00 WIB',
+    3: '07.30 – 13.00 WIB',
+    4: '07.30 – 13.00 WIB',
+    5: '07.30 – 11.00 WIB',
+    6: '07.30 – 12.00 WIB'
+  };
 
   function pad(n){ return n.toString().padStart(2,'0'); }
 
@@ -993,27 +996,31 @@ kemandirian masyarakat untuk berperilaku hidup bersih dan sehat"</p>
     const jam = pad(now.getHours());
     const menit = pad(now.getMinutes());
     const detik = pad(now.getSeconds());
+    const hariIndex = now.getDay();
+
     document.getElementById('liveclock').textContent = `${jam}:${menit}:${detik}`;
-    document.getElementById('livedate').textContent = `${hariNama[now.getDay()]}, ${now.getDate()} ${bulanNama[now.getMonth()]} ${now.getFullYear()}`;
+    document.getElementById('livedate').textContent = `${hariNama[hariIndex]}, ${now.getDate()} ${bulanNama[now.getMonth()]} ${now.getFullYear()}`;
+
+    // Menampilkan jadwal HANYA untuk hari ini ke dalam elemen HTML
+    document.getElementById('todaySchedule').textContent = jadwalHarian[hariIndex];
 
     const totalMenit = now.getHours() * 60 + now.getMinutes();
-    const hari = now.getDay(); // 0 = Minggu, 1 = Senin, 2 = Selasa, dst.
     
     let buka = 7 * 60 + 30; // 07.30
     let tutup = 0;
     let isOpen = false;
 
-    // Cek jadwal tutup berdasarkan hari
-    if (hari >= 1 && hari <= 4) { // Senin - Kamis
+    // Cek jadwal tutup berdasarkan hari untuk indikator BUKA/TUTUP
+    if (hariIndex >= 1 && hariIndex <= 4) { // Senin - Kamis
       tutup = 13 * 60; // 13.00
-    } else if (hari === 5) { // Jumat
+    } else if (hariIndex === 5) { // Jumat
       tutup = 11 * 60; // 11.00
-    } else if (hari === 6) { // Sabtu
+    } else if (hariIndex === 6) { // Sabtu
       tutup = 12 * 60; // 12.00
     }
 
-    // Tentukan apakah puskesmas Buka / Tutup hari ini
-    if (hari !== 0 && totalMenit >= buka && totalMenit < tutup) {
+    // Tentukan apakah puskesmas Buka / Tutup saat ini
+    if (hariIndex !== 0 && totalMenit >= buka && totalMenit < tutup) {
       isOpen = true;
     }
 
@@ -1027,8 +1034,9 @@ kemandirian masyarakat untuk berperilaku hidup bersih dan sehat"</p>
       pill.innerHTML = '<span class="dot"></span> Jam Pelayanan tutup saat ini · UGD tetap siaga 24 jam';
     }
   }
-  updateClock();
-  setInterval(updateClock, 1000);
+  
+  updateClock(); // Panggil sekali di awal agar tidak delay
+  setInterval(updateClock, 1000); // Update setiap detik
 
   // ===== Loading screen =====
   window.addEventListener('load', function() {
