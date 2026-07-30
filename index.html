@@ -23,7 +23,7 @@
     --radius:14px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{}
   body{
     font-family:'Public Sans', sans-serif;
     color:var(--ink);
@@ -46,8 +46,8 @@
   section{padding:88px 0;}
   .btn{
     display:inline-flex; align-items:center; gap:8px;
-    padding:13px 26px; border-radius:999px;
-    font-weight:700; font-size:0.95rem;
+    padding:10px 22px; border-radius:999px;
+    font-weight:700; font-size:0.92rem;
     border:1.5px solid transparent;
     cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
   }
@@ -59,73 +59,49 @@
   /* ===== TOPBAR ===== */
   .topbar{
     background:var(--teal-900); color:#CFE3DC;
-    font-size:0.82rem;
+    font-size:0.8rem;
   }
-  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:8px 24px; flex-wrap:wrap; gap:6px;}
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:6px 24px; flex-wrap:wrap; gap:6px;}
   .topbar span{display:inline-flex; align-items:center; gap:6px;}
 
   /* ===== NAV ===== */
   header.nav{
     position:sticky; top:0; z-index:80;
-    background:rgba(246,245,240,0.92);
+    background:rgba(246,245,240,0.95);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .navrow{display:flex; align-items:center; justify-content:space-between; padding:12px 24px;}
+  .navrow{display:flex; align-items:center; justify-content:space-between; padding:8px 24px;}
   .brand{display:flex; align-items:center;}
-  .brand-logo { height: 80px; width: auto; object-fit: contain; }
+  .brand-logo { height: 60px; width: auto; object-fit: contain; }
   
-  nav.links{display:flex; gap:28px; align-items:center;}
-  nav.links a{font-size:0.92rem; font-weight:600; color:var(--ink-soft); transition: color 0.2s;}
+  nav.links{display:flex; gap:24px; align-items:center;}
+  nav.links a{font-size:0.9rem; font-weight:600; color:var(--ink-soft); transition: color 0.2s; cursor: pointer;}
   nav.links a:hover{color:var(--teal-700);}
 
-  /* ===== DROPDOWN MENU TENTANG KAMI ===== */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
+  /* ===== DROPDOWN MENU ===== */
+  .dropdown { position: relative; display: inline-block; }
   .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--white);
-    min-width: 200px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    z-index: 99;
-    top: 100%;
-    left: 0;
-    padding: 8px 0;
-    border: 1px solid var(--line);
+    display: none; position: absolute; background-color: var(--white);
+    min-width: 220px; box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    border-radius: 10px; z-index: 99; top: 100%; left: 0;
+    padding: 8px 0; border: 1px solid var(--line);
   }
-  .dropdown-content a {
-    color: var(--ink-soft);
-    padding: 10px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.88rem;
-  }
-  .dropdown-content a:hover {
-    background-color: var(--teal-100);
-    color: var(--teal-700);
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
+  .dropdown-content a { color: var(--ink-soft); padding: 10px 16px; text-decoration: none; display: block; font-size: 0.85rem; border-bottom: 1px solid #f0f0f0; }
+  .dropdown-content a:last-child { border-bottom: none; }
+  .dropdown-content a:hover { background-color: var(--teal-100); color: var(--teal-700); }
+  .dropdown:hover .dropdown-content { display: block; }
 
-  .navcta{display:flex; align-items:center; gap:14px;}
+  .navcta{display:flex; align-items:center; gap:12px;}
   .menu-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
-  .menu-toggle span{width:24px; height:2.5px; background:var(--teal-900); border-radius:2px;}
+  .menu-toggle span{width:22px; height:2px; background:var(--teal-900); border-radius:2px;}
 
   /* ===== HERO ===== */
   .hero{
     position:relative; overflow:hidden;
     background: linear-gradient(135deg, rgba(14, 59, 51, 0.4) 0%, rgba(10, 43, 37, 0.8) 100%), url('img/sampul.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: var(--teal-900);
-    color:var(--white);
-    padding:80px 0 0;
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    background-color: var(--teal-900); color:var(--white); padding:80px 0 0;
   }
   .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
   .hero h1{color:var(--white); font-size:clamp(2.1rem, 4vw, 3.1rem); margin:14px 0 18px;}
@@ -141,55 +117,33 @@
 
   /* Signature: papan jadwal / status board */
   .signboard{
-    background:var(--white);
-    border-radius:20px;
-    padding:26px;
-    color:var(--ink);
-    box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
-    position:relative;
-    border:1px solid rgba(255,255,255,.4);
+    background:var(--white); border-radius:20px; padding:26px;
+    color:var(--ink); box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
+    position:relative; border:1px solid rgba(255,255,255,.4);
   }
   .signboard::before{
-    content:"";
-    position:absolute; inset:-1px;
-    border-radius:20px;
-    padding:1px;
+    content:""; position:absolute; inset:-1px; border-radius:20px; padding:1px;
     background:linear-gradient(135deg, var(--amber-500), transparent 40%);
     -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor; mask-composite:exclude;
-    pointer-events:none;
+    -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
   }
   .sb-head{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px;}
   .sb-head .eyebrow{color:var(--teal-500);}
   #liveclock{font-family:'JetBrains Mono', monospace; font-size:1.6rem; font-weight:700; color:var(--teal-900);}
   #livedate{font-size:0.78rem; color:var(--ink-soft); font-family:'JetBrains Mono', monospace;}
-  .status-pill{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:6px 14px; border-radius:999px;
-    font-weight:700; font-size:0.82rem;
-    margin-bottom:20px;
-  }
+  .status-pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border-radius:999px; font-weight:700; font-size:0.82rem; margin-bottom:20px; }
   .status-pill .dot{width:8px; height:8px; border-radius:50%;}
   .status-open{background:var(--teal-100); color:var(--teal-700);}
   .status-open .dot{background:var(--teal-500); box-shadow:0 0 0 4px rgba(29,133,113,.18);}
   .status-closed{background:var(--amber-100); color:#9A5A17;}
   .status-closed .dot{background:var(--amber-500); box-shadow:0 0 0 4px rgba(227,150,62,.2);}
 
-  .sched-row{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:14px 0; border-top:1px dashed var(--line);
-  }
+  .sched-row{ display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-top:1px dashed var(--line); }
   .sched-row:first-of-type{border-top:none;}
   .sched-row .label{font-weight:700; font-size:0.92rem;}
   .sched-row .label small{display:block; font-weight:500; color:var(--ink-soft); font-size:0.76rem;}
   .sched-row .time{font-family:'JetBrains Mono', monospace; font-weight:700; color:var(--teal-700); font-size:0.95rem; text-align:right;}
-
-  .emergency-strip{
-    margin-top:18px; padding:14px 16px; border-radius:12px;
-    background:var(--teal-900); color:var(--white);
-    display:flex; justify-content:space-between; align-items:center; gap:10px;
-    font-size:0.85rem;
-  }
+  .emergency-strip{ margin-top:18px; padding:14px 16px; border-radius:12px; background:var(--teal-900); color:var(--white); display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:0.85rem; }
   .emergency-strip a{font-weight:700; color:var(--amber-500);}
 
   .hero-stats{display:flex; gap:0; margin-top:0; border-top:1px solid rgba(255,255,255,.14);}
@@ -206,90 +160,28 @@
 
   /* ===== TENTANG KAMI SLIDER SECTION ===== */
   .tentang-kami-section { background: var(--white); }
-  .about-tabs {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-  .tab-btn {
-    background: var(--teal-100);
-    border: 1.5px solid var(--teal-500);
-    color: var(--teal-700);
-    padding: 10px 22px;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-  .tab-btn.active, .tab-btn:hover {
-    background: var(--teal-700);
-    color: var(--white);
-    border-color: var(--teal-700);
-  }
-  .about-slider-container {
-    position: relative;
-    overflow: hidden;
-  }
-  .about-slide {
-    display: none;
-    animation: fadeInSlide 0.4s ease forwards;
-  }
-  .about-slide.active {
-    display: block;
-  }
-  @keyframes fadeInSlide {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .about-tabs { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+  .tab-btn { background: var(--teal-100); border: 1.5px solid var(--teal-500); color: var(--teal-700); padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.25s ease; }
+  .tab-btn.active, .tab-btn:hover { background: var(--teal-700); color: var(--white); border-color: var(--teal-700); }
+  .about-slider-container { position: relative; overflow: hidden; }
+  .about-slide { display: none; animation: fadeInSlide 0.4s ease forwards; }
+  .about-slide.active { display: block; }
+  @keyframes fadeInSlide { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
   /* PROFIL GRID */
   .profil-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
-  .profil-media{
-    border-radius:var(--radius); overflow:hidden;
-    aspect-ratio:4/3.1;
-    background: repeating-linear-gradient(135deg, var(--teal-100) 0 14px, #DCEAE3 14px 28px);
-    position:relative;
-    display:flex; align-items:center; justify-content:center;
-    border:1px solid var(--line);
-  }
-  .profil-media .tag{
-    position:absolute; bottom:16px; left:16px;
-    background:rgba(14,59,51,0.85); color:var(--white);
-    font-family:'JetBrains Mono',monospace; font-size:0.72rem;
-    padding:6px 12px; border-radius:8px; z-index: 2;
-  }
-  .profil-media svg{width:34%; opacity:0.55; position: absolute;}
-  .profil-media img {
-    width: 100%; height: 100%; object-fit: cover;
-    animation: zoomInOutProfile 4s ease-in-out infinite;
-  }
-  @keyframes zoomInOutProfile {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.12); }
-  }
+  .profil-media{ border-radius:var(--radius); overflow:hidden; aspect-ratio:4/3.1; background: repeating-linear-gradient(135deg, var(--teal-100) 0 14px, #DCEAE3 14px 28px); position:relative; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); }
+  .profil-media img { width: 100%; height: 100%; object-fit: cover; animation: zoomInOutProfile 4s ease-in-out infinite; }
+  @keyframes zoomInOutProfile { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
   .profil-text p{color:var(--ink-soft); margin-bottom:16px;}
   .vismis{display:grid; gap:14px; margin-top:26px;}
-  .vismis .card{
-    padding:20px; border-radius:12px; background:var(--teal-100);
-    border-left:4px solid var(--teal-500);
-  }
+  .vismis .card{ padding:20px; border-radius:12px; background:var(--teal-100); border-left:4px solid var(--teal-500); }
   .vismis .card.amber{background:var(--amber-100); border-left-color:var(--amber-500);}
   .vismis .card h4{font-size:0.78rem; text-transform:uppercase; letter-spacing:.08em; font-family:'Public Sans'; color:var(--teal-700); margin-bottom:6px;}
   .vismis .card.amber h4{color:#9A5A17;}
   .vismis .card p{color:var(--ink); font-family:'Fraunces', serif; font-style:italic; font-size:1.02rem;}
 
-  /* INFO BOX FULL (Untuk Pengaduan & Pelayanan) */
-  .info-box-full {
-    background: var(--teal-100);
-    padding: 48px;
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-  }
+  .info-box-full { background: var(--teal-100); padding: 48px; border-radius: var(--radius); border: 1px solid var(--line); text-align: center; max-width: 800px; margin: 0 auto; }
   .info-box-full h3 { font-size: 1.8rem; margin-bottom: 16px; color: var(--teal-900); }
   .info-box-full p { color: var(--ink-soft); margin-bottom: 24px; font-size: 1.05rem; }
 
@@ -298,106 +190,34 @@
   .layanan .sec-head h2{color:var(--white);}
   .layanan .sec-head p{color:#BFD5CC;}
   .klaster-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(210px,1fr)); gap:18px;}
-  .kcard{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.12);
-    border-radius:var(--radius);
-    padding:26px 22px;
-    transition:background .2s ease, transform .2s ease;
-  }
+  .kcard{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius); padding:26px 22px; transition:background .2s ease, transform .2s ease; }
   .kcard:hover{background:rgba(255,255,255,0.09); transform:translateY(-4px);}
   .kcard .knum{font-family:'JetBrains Mono',monospace; color:var(--amber-500); font-weight:700; font-size:0.85rem; display:block; margin-bottom:14px;}
   .kcard h4{color:var(--white); font-size:1.06rem; margin-bottom:8px;}
   .kcard p{color:#B9CFC7; font-size:0.88rem;}
 
   .ukp-ukm{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:40px;}
-  .uk-card{
-    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14);
-    border-radius:var(--radius); padding:24px;
-    display:flex; gap:16px; align-items:flex-start;
-  }
-  .uk-card .ic{
-    width:46px; height:46px; border-radius:10px; flex-shrink:0;
-    background:var(--amber-500); display:flex; align-items:center; justify-content:center;
-    color:var(--teal-900); font-weight:800; font-family:'Fraunces',serif;
-  }
+  .uk-card{ background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:var(--radius); padding:24px; display:flex; gap:16px; align-items:flex-start; }
+  .uk-card .ic{ width:46px; height:46px; border-radius:10px; flex-shrink:0; background:var(--amber-500); display:flex; align-items:center; justify-content:center; color:var(--teal-900); font-weight:800; font-family:'Fraunces',serif; }
   .uk-card h4{color:var(--white); font-size:1rem; margin-bottom:6px;}
   .uk-card p{color:#B9CFC7; font-size:0.86rem;}
 
   /* ===== GALERI ===== */
-  .galeri-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); grid-auto-rows:220px; gap:16px;
-  }
-  .gitem{
-    border-radius:12px; overflow:hidden; position:relative;
-    background:var(--teal-900);
-    border:1px solid var(--line);
-    cursor: pointer;
-  }
+  .galeri-grid{ display:grid; grid-template-columns:repeat(3, 1fr); grid-auto-rows:220px; gap:16px; }
+  .gitem{ border-radius:12px; overflow:hidden; position:relative; background:var(--teal-900); border:1px solid var(--line); cursor: pointer; }
   .gitem:nth-child(1){grid-column:span 2; grid-row:span 2;}
-  .gitem img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  .gitem .overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(14, 59, 51, 0.85) 0%, rgba(14, 59, 51, 0.3) 100%);
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 24px; opacity: 0; visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  .gitem .overlay h4 {
-    color: var(--white); font-size: 1.25rem; margin-bottom: 6px;
-    transform: translateY(15px); transition: transform 0.3s ease;
-  }
-  .gitem .overlay p {
-    color: #D8E7E1; font-size: 0.9rem;
-    transform: translateY(15px); transition: transform 0.3s ease 0.05s;
-  }
+  .gitem img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .gitem .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(14, 59, 51, 0.85) 0%, rgba(14, 59, 51, 0.3) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+  .gitem .overlay h4 { color: var(--white); font-size: 1.25rem; margin-bottom: 6px; transform: translateY(15px); transition: transform 0.3s ease; }
+  .gitem .overlay p { color: #D8E7E1; font-size: 0.9rem; transform: translateY(15px); transition: transform 0.3s ease 0.05s; }
   .gitem:hover img { transform: scale(1.1); }
   .gitem:hover .overlay { opacity: 1; visibility: visible; }
   .gitem:hover .overlay h4, .gitem:hover .overlay p { transform: translateY(0); }
 
-  /* ===== KONTAK ===== */
-  .kontak{background:var(--white);}
-  .kontak-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:20px; overflow:hidden; border:1px solid var(--line);}
-  .kontak-info{background:var(--teal-100); padding:44px; }
-  .kontak-info h3{margin-bottom:18px;}
-  .kinfo-row{display:flex; gap:14px; padding:16px 0; border-top:1px solid rgba(20,99,86,.14);}
-  .kinfo-row:first-of-type{border-top:none;}
-  .kinfo-row .ic{
-    width:38px; height:38px; border-radius:9px; background:var(--teal-700); color:var(--white);
-    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.9rem;
-  }
-  .kinfo-row .t strong{display:block; font-size:0.92rem; color:var(--teal-900);}
-  .kinfo-row .t span{font-size:0.87rem; color:var(--ink-soft);}
-  .map-embed{
-    background:
-      linear-gradient(0deg, rgba(14,59,51,.06), rgba(14,59,51,.06)),
-      repeating-linear-gradient(0deg, #E7EEE9 0 1px, transparent 1px 40px),
-      repeating-linear-gradient(90deg, #E7EEE9 0 1px, transparent 1px 40px);
-    background-color:#EEF2EE; min-height:100%;
-    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px;
-    color:var(--ink-soft); text-align:center; padding:24px;
-  }
-  .map-embed .pin{
-    width:44px; height:44px; border-radius:50% 50% 50% 0; background:var(--amber-500);
-    transform:rotate(-45deg); display:flex; align-items:center; justify-content:center;
-    box-shadow:0 10px 18px -6px rgba(227,150,62,.6);
-  }
-  .map-embed .pin::after{content:""; width:14px; height:14px; background:var(--white); border-radius:50%; transform:rotate(45deg);}
-  .map-embed small{font-family:'JetBrains Mono', monospace; font-size:0.72rem;}
-
-  /* ===== BERITA (DIBAWAH / PALING BAWAH SEBELUM KONTAK) ===== */
+  /* ===== BERITA ===== */
   .berita { background: var(--cream); }
   .berita-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .bcard {
-    background: var(--white);
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--line);
-    transition: transform 0.3s ease;
-  }
+  .bcard { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); transition: transform 0.3s ease; cursor: pointer; }
   .bcard:hover { transform: translateY(-5px); }
   .bcard-img { height: 200px; background: var(--teal-100); overflow: hidden; display: flex; align-items: center; justify-content: center; }
   .bcard-img img { width: 100%; height: 100%; object-fit: cover; }
@@ -405,16 +225,45 @@
   .bcard-date { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--teal-500); margin-bottom: 8px; display: block; }
   .bcard-body h4 { font-size: 1.1rem; margin-bottom: 10px; color: var(--teal-900); }
   .bcard-body p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 16px; }
-  .bcard-link { font-weight: 700; font-size: 0.85rem; color: var(--teal-700); }
+  .bcard-link { font-weight: 700; font-size: 0.85rem; color: var(--teal-700); border:none; background:none; cursor:pointer; padding:0; display:inline-block; }
 
-  /* ===== SOSMED / CTA STRIP ===== */
-  .cta-strip{
-    background:linear-gradient(120deg, var(--amber-500), #D97F27);
-    color:var(--white); padding:56px 0;
-  }
+  /* ===== HALAMAN ARTIKEL / HALAMAN BARU (TARIF/LAYANAN) ===== */
+  .page-view { display: none; padding: 60px 0 100px; background: var(--cream); min-height: 80vh; }
+  .page-container { max-width: 960px; margin: 0 auto; background: var(--white); padding: 48px; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+  .page-back { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--teal-500); margin-bottom: 24px; font-size: 0.9rem; cursor:pointer; transition: color 0.2s ease;}
+  .page-back:hover { color: var(--amber-500); }
+  .page-title { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 10px; color: var(--teal-900); line-height: 1.3; }
+  .page-desc { color: var(--ink-soft); margin-bottom: 40px; font-size: 1.05rem; }
+
+  /* ===== TABEL TARIF & STANDAR LAYANAN ===== */
+  .tabel-klaster { margin-bottom: 40px; }
+  .tabel-klaster h3 { font-family: 'Public Sans', sans-serif; background-color: var(--teal-100); color: var(--teal-900); padding: 12px 20px; border-radius: 8px 8px 0 0; margin-bottom: 0; font-size: 1.1rem; border: 1px solid var(--line); border-bottom: none; }
+  .data-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); background: var(--white); }
+  .data-table th, .data-table td { padding: 12px 20px; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
+  .data-table th { background-color: var(--teal-900); color: var(--white); font-weight: 600; }
+  .data-table tr:nth-child(even) { background-color: #FAFAFA; }
+  .data-table tr:hover { background-color: #F0F7F5; }
+  .data-table td:last-child { font-weight: 600; color: var(--teal-700); text-align: right; }
+  .data-table.layanan-table td:last-child { text-align: left; color: inherit; font-weight: normal; }
+
+  /* ===== KONTAK ===== */
+  .cta-strip{ background:linear-gradient(120deg, var(--amber-500), #D97F27); color:var(--white); padding:56px 0; }
   .cta-strip .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;}
   .cta-strip h3{color:var(--white); font-size:1.5rem;}
   .cta-strip p{color:#FCEBD6; margin-top:6px;}
+  .kontak{background:var(--white);}
+  .kontak-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:20px; overflow:hidden; border:1px solid var(--line);}
+  .kontak-info{background:var(--teal-100); padding:44px; }
+  .kontak-info h3{margin-bottom:18px;}
+  .kinfo-row{display:flex; gap:14px; padding:16px 0; border-top:1px solid rgba(20,99,86,.14);}
+  .kinfo-row:first-of-type{border-top:none;}
+  .kinfo-row .ic{ width:38px; height:38px; border-radius:9px; background:var(--teal-700); color:var(--white); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.9rem; }
+  .kinfo-row .t strong{display:block; font-size:0.92rem; color:var(--teal-900);}
+  .kinfo-row .t span{font-size:0.87rem; color:var(--ink-soft);}
+  .map-embed{ background: linear-gradient(0deg, rgba(14,59,51,.06), rgba(14,59,51,.06)), repeating-linear-gradient(0deg, #E7EEE9 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, #E7EEE9 0 1px, transparent 1px 40px); background-color:#EEF2EE; min-height:100%; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px; color:var(--ink-soft); text-align:center; padding:24px; }
+  .map-embed .pin{ width:44px; height:44px; border-radius:50% 50% 50% 0; background:var(--amber-500); transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 18px -6px rgba(227,150,62,.6); }
+  .map-embed .pin::after{content:""; width:14px; height:14px; background:var(--white); border-radius:50%; transform:rotate(45deg);}
+  .map-embed small{font-family:'JetBrains Mono', monospace; font-size:0.72rem;}
 
   /* ===== FOOTER ===== */
   footer{background:var(--teal-900); color:#A9C4BB; padding:56px 0 26px; font-size:0.88rem;}
@@ -427,77 +276,41 @@
   .foot-bottom{border-top:1px solid rgba(255,255,255,.1); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.8rem;}
 
   /* ===== LIGHTBOX GALERI ===== */
-  .lightbox {
-    position: fixed; inset: 0; z-index: 9999;
-    background-color: rgba(22, 34, 30, 0.9);
-    backdrop-filter: blur(5px);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
+  .lightbox { position: fixed; inset: 0; z-index: 9999; background-color: rgba(22, 34, 30, 0.9); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
   .lightbox.show { opacity: 1; visibility: visible; }
-  .lightbox-content {
-    max-width: 90%; max-height: 90vh; border-radius: 12px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    transform: scale(0.8); transition: transform 0.3s ease; object-fit: contain;
-  }
+  .lightbox-content { max-width: 90%; max-height: 90vh; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); transform: scale(0.8); transition: transform 0.3s ease; object-fit: contain; }
   .lightbox.show .lightbox-content { transform: scale(1); }
-  .close-lightbox {
-    position: absolute; top: 20px; right: 35px;
-    color: var(--white); font-size: 44px; font-weight: bold;
-    cursor: pointer; transition: color 0.2s ease; z-index: 10000;
-  }
+  .close-lightbox { position: absolute; top: 20px; right: 35px; color: var(--white); font-size: 44px; font-weight: bold; cursor: pointer; transition: color 0.2s ease; z-index: 10000; }
   .close-lightbox:hover { color: var(--amber-500); }
 
   /* ===== EFEK AURORA MOUSE ===== */
-  .aurora-cursor {
-    position: fixed; top: 0; left: 0; width: 350px; height: 350px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(29, 133, 113, 0.35) 0%, rgba(143, 214, 191, 0.15) 45%, transparent 70%);
-    filter: blur(40px); pointer-events: none; z-index: 45; opacity: 0;
-    transition: opacity 0.4s ease; will-change: transform; mix-blend-mode: multiply;
-  }
-  .aurora-cursor.light-blend {
-    mix-blend-mode: screen;
-    background: radial-gradient(circle, rgba(143, 214, 191, 0.25) 0%, rgba(227, 150, 62, 0.1) 45%, transparent 70%);
-  }
+  .aurora-cursor { position: fixed; top: 0; left: 0; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(29, 133, 113, 0.35) 0%, rgba(143, 214, 191, 0.15) 45%, transparent 70%); filter: blur(40px); pointer-events: none; z-index: 45; opacity: 0; transition: opacity 0.4s ease; will-change: transform; mix-blend-mode: multiply; }
+  .aurora-cursor.light-blend { mix-blend-mode: screen; background: radial-gradient(circle, rgba(143, 214, 191, 0.25) 0%, rgba(227, 150, 62, 0.1) 45%, transparent 70%); }
 
   /* ===== LOADER ===== */
-  #loader{
-    position:fixed; inset:0; z-index:999; background:var(--teal-900);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px;
-    transition:opacity .6s ease, visibility .6s ease;
-  }
+  #loader{ position:fixed; inset:0; z-index:999; background:var(--teal-900); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; transition:opacity .6s ease, visibility .6s ease; }
   #loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
-  #loader .loader-img {
-    width: 240px; max-width: 80%; border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: pulseImg 1.5s ease-in-out infinite;
-  }
-  @keyframes pulseImg {
-    0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-    50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); }
-  }
+  #loader .loader-img { width: 240px; max-width: 80%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); animation: pulseImg 1.5s ease-in-out infinite; }
+  @keyframes pulseImg { 0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); } 50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); } }
   #loader .ltext{font-family:'JetBrains Mono',monospace; font-size:0.78rem; letter-spacing:.12em; text-transform:uppercase; color:#8FD6BF;}
   #loader .lbar{width:160px; height:3px; border-radius:99px; background:rgba(255,255,255,.14); overflow:hidden;}
   #loader .lbar span{display:block; height:100%; width:40%; background:var(--amber-500); border-radius:99px; animation:lbarMove 1.1s ease-in-out infinite;}
-  @keyframes lbarMove{
-    0%{ transform:translateX(-100%); }
-    100%{ transform:translateX(350%); }
-  }
+  @keyframes lbarMove{ 0%{ transform:translateX(-100%); } 100%{ transform:translateX(350%); } }
 
   .pop-in{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
   body.ready .pop-in{ opacity:1; transform:translateY(0); }
   .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
 
-  .btn, .kcard, .uk-card, .gitem, .bcard, .vismis .card, nav.links a{
-    -webkit-tap-highlight-color:transparent; position:relative; overflow:hidden;
-  }
+  .btn, .kcard, .uk-card, .gitem, .bcard, .vismis .card, nav.links a { -webkit-tap-highlight-color:transparent; position:relative; overflow:hidden; }
   .btn:active{ transform:scale(.96); }
 
   @media (max-width: 900px){
-    nav.links{position:fixed; top:73px; left:0; right:0; background:var(--cream); flex-direction:column; align-items:flex-start; padding:20px 24px; gap:16px; border-bottom:1px solid var(--line); display:none;}
+    nav.links{position:fixed; top:75px; left:0; right:0; background:var(--cream); flex-direction:column; align-items:flex-start; padding:20px 24px; gap:16px; border-bottom:1px solid var(--line); display:none;}
     nav.links.open{display:flex;}
+    .dropdown-content { position: static; box-shadow: none; border: none; background: transparent; display: none; min-width: 100%; padding-left: 15px;}
+    .dropdown:hover .dropdown-content { display: none; }
+    .dropdown.active .dropdown-content { display: block; }
     .menu-toggle{display:flex;}
     .navcta .btn span{display:none;}
     .brand-logo { height: 40px; }
@@ -511,13 +324,14 @@
     .galeri-grid{grid-template-columns:repeat(2,1fr);}
     .gitem:nth-child(1){grid-column:span 2;}
     .foot-grid{grid-template-columns:1fr 1fr;}
+    .page-container { padding: 24px; border-radius: 0; border-left: none; border-right: none; }
   }
 </style>
 </head>
 <body>
 
 <div id="loader">
-  <img src="img/sampul.png" alt="Puskesmas Tegowanu" class="loader-img">
+  <img src="img/images.jpg" alt="Puskesmas Tegowanu" class="loader-img" onerror="this.src='https://placehold.co/240x240?text=Puskesmas'">
   <div class="ltext">Memuat halaman…</div>
   <div class="lbar"><span></span></div>
 </div>
@@ -531,529 +345,798 @@
 
 <div class="topbar">
   <div class="wrap">
-    <span>📍 Jl. R. Soeprapto, Kuwaron, Kec. Tegowanu, Kab. Grobogan, Jawa Tengah 58164</span>
-    <span>✉️ puskesmastegowanu@contoh.go.id &nbsp;|&nbsp; ☎️ (0292) xxx-xxx</span>
+    <span>📍 Jl. Raya Purwodadi - Semarang, Mbah Jembangan, Tegowanu Kulon, Kec. Tegowanu</span>
+    <span>✉️ puskesmastegowanu@contoh.go.id &nbsp;|&nbsp; ☎️ 081215935791</span>
   </div>
 </div>
 
+<!-- ============================================== -->
+<!-- HEADER NAVIGASI -->
+<!-- ============================================== -->
 <header class="nav">
   <div class="navrow wrap">
     <div class="brand">
-      <img src="img/logo.png" alt="Logo Puskesmas Tegowanu" class="brand-logo">
+      <a href="#" onclick="openView('main-view'); return false;"><img src="img/logo.png" alt="Logo Puskesmas Tegowanu" class="brand-logo" onerror="this.src='https://placehold.co/150x60?text=Logo'"></a>
     </div>
     <nav class="links" id="navLinks">
       <a href="#beranda" class="nav-link">Beranda</a>
       
-      <!-- Menu Dropdown Tentang Kami dengan Slide Interaktif -->
-      <div class="dropdown">
-        <a href="#tentang-kami" class="nav-link" style="display:flex; align-items:center; gap:4px;">Tentang Kami ▾</a>
+      <div class="dropdown" onclick="this.classList.toggle('active')">
+        <a href="#" class="nav-link" style="display:flex; align-items:center; gap:4px;">Profil ▾</a>
         <div class="dropdown-content">
-          <a href="#" onclick="selectAboutTab(0); return false;">Profil Puskesmas</a>
-          <a href="#" onclick="selectAboutTab(1); return false;">Pengaduan</a>
-          <a href="#" onclick="selectAboutTab(2); return false;">Pengisian Pelayanan</a>
+          <a href="#" onclick="openView('main-view', null, false); setTimeout(()=>selectAboutTab(0), 50); return false;">Profil Puskesmas</a>
+          <a href="#" onclick="openView('main-view', null, false); setTimeout(()=>selectAboutTab(1), 50); return false;">Pengaduan</a>
         </div>
       </div>
 
-      <a href="#layanan" class="nav-link">Layanan</a>
+      <div class="dropdown" onclick="this.classList.toggle('active')">
+        <a href="#" class="nav-link" style="display:flex; align-items:center; gap:4px;">Layanan ▾</a>
+        <div class="dropdown-content">
+          <a href="#layanan" class="nav-link">Program Puskesmas</a>
+          <a href="#" onclick="openView('tarif-view'); return false;">Tarif Layanan (Perda)</a>
+          <a href="#" onclick="openView('standar-layanan-view'); return false;">Standar Layanan</a>
+        </div>
+      </div>
+
+      <a href="#" onclick="openView('survey-view'); return false;" class="nav-link">Survey Kepuasan</a>
       <a href="#berita" class="nav-link">Berita</a>
       <a href="#galeri" class="nav-link">Galeri</a>
-      <a href="#kontak" class="nav-link">Kontak</a>
     </nav>
     <div class="navcta">
-      <a href="https://wa.me/6281215935791" class="btn btn-outline" style="padding:10px 18px;">💬 <span>WhatsApp</span></a>
+      <a href="https://wa.me/6281215935791" class="btn btn-outline" style="padding:8px 16px; font-size:0.85rem;">💬 <span>WhatsApp</span></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Buka menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<section class="hero" id="beranda">
-  <div class="wrap">
-    <div class="hero-copy">
-      <p class="eyebrow pop-in" style="color:#8FD6BF; transition-delay:.05s;">Selamat datang di web resmi</p>
-      <h1 class="pop-in" style="transition-delay:.15s;">UPTD Puskesmas<br>Tegowanu</h1>
-      <p class="lead pop-in" style="transition-delay:.25s;">Puskesmas rawat inap di Kecamatan Tegowanu, Kabupaten Grobogan — melayani masyarakat dengan sigap, akurat, dan penuh dedikasi.</p>
-      <div class="motto-tag pop-in" style="transition-delay:.35s;">❝ Sahabat Menuju Sehat ❞</div>
-      <div class="hero-actions pop-in" style="transition-delay:.45s;">
-        <a href="https://wa.me/6281215935791" class="btn btn-primary">Hubungi Kami</a>
-        <a href="#layanan" class="btn btn-ghost nav-link">Lihat Layanan</a>
-      </div>
-    </div>
-
-    <div class="signboard pop-in" style="transition-delay:.3s;">
-      <div class="sb-head">
-        <div>
-          <span class="eyebrow">Papan Status Layanan</span>
-          <div id="livedate">Memuat tanggal…</div>
-        </div>
-        <div id="liveclock">--:--:--</div>
-      </div>
-
-      <div id="statusPill" class="status-pill status-open"><span class="dot"></span> Memeriksa status…</div>
-
-      <div class="sched-row">
-        <div class="label">UGD / RI PONED<small>Gawat darurat & rawat inap</small></div>
-        <div class="time">24 JAM</div>
-      </div>
-      
-      <!-- Jam Pelayanan Otomatis menyesuaikan hari ini -->
-      <div class="sched-row">
-        <div class="label">Jam Pelayanan<small>Poli umum, KIA, gigi, dll.</small></div>
-        <div class="time" id="todaySchedule">--.-- – --.-- WIB</div>
-      </div>
-
-      <div class="emergency-strip">
-        <span>Kondisi darurat?</span>
-        <a href="https://wa.me/6281215935791">Hubungi UGD →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-stats">
+<!-- ============================================== -->
+<!-- WRAPPER HALAMAN UTAMA -->
+<!-- ============================================== -->
+<div id="main-view" class="view-section">
+  
+  <section class="hero" id="beranda">
     <div class="wrap">
-      <div class="hstat"><div class="num">13</div><div class="lab">Desa Wilayah Kerja</div></div>
-      <div class="hstat"><div class="num">67</div><div class="lab">Posyandu Balita</div></div>
-      <div class="hstat"><div class="num">9</div><div class="lab">Poskesdes / PKD</div></div>
-      <div class="hstat"><div class="num">24/7</div><div class="lab">Layanan UGD</div></div>
-    </div>
-  </div>
-</section>
+      <div class="hero-copy">
+        <p class="eyebrow pop-in" style="color:#8FD6BF; transition-delay:.05s;">Selamat datang di web resmi</p>
+        <h1 class="pop-in" style="transition-delay:.15s;">UPTD Puskesmas<br>Tegowanu</h1>
+        <p class="lead pop-in" style="transition-delay:.25s;">Puskesmas rawat inap di Kecamatan Tegowanu, Kabupaten Grobogan — melayani masyarakat dengan sigap, akurat, dan penuh dedikasi.</p>
+        <div class="motto-tag pop-in" style="transition-delay:.35s;">❝ Melayani Dengan Sepenuh Hati ❞</div>
+        <div class="hero-actions pop-in" style="transition-delay:.45s;">
+          <a href="https://wa.me/6281215935791" class="btn btn-primary">Hubungi Kami</a>
+          <a href="#layanan" class="btn btn-ghost nav-link">Lihat Layanan</a>
+        </div>
+      </div>
 
-<!-- SECTION TENTANG KAMI (DENGAN SISTEM SLIDE/TAB TANPA PINDAH TAB BROWSER) -->
-<section class="tentang-kami-section reveal" id="tentang-kami">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Tentang Kami</span>
-      <h2>Informasi & Layanan Puskesmas</h2>
-      <p>Pilih tombol di bawah untuk melihat profil, layanan pengaduan, atau pengisian pelayanan secara interaktif.</p>
-    </div>
-
-    <!-- Tab Tombol Slide -->
-    <div class="about-tabs">
-      <button class="tab-btn active" onclick="showAboutSlide(0)">Profil Puskesmas</button>
-      <button class="tab-btn" onclick="showAboutSlide(1)">Pengaduan Masyarakat</button>
-      <button class="tab-btn" onclick="showAboutSlide(2)">Pengisian Pelayanan</button>
-    </div>
-
-    <!-- Container Slide -->
-    <div class="about-slider-container">
-      <!-- Slide 1: Profil -->
-      <div class="about-slide active" id="slide-0">
-        <div class="profil-grid">
-          <div class="profil-media">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M32 4 L58 18 V46 L32 60 L6 46 V18 Z" stroke="#146356" stroke-width="2"/>
-              <path d="M32 20 V44 M20 32 H44" stroke="#146356" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-            <img src="img/profil.jpg" alt="Profil Puskesmas Tegowanu">
+      <div class="signboard pop-in" style="transition-delay:.3s;">
+        <div class="sb-head">
+          <div>
+            <span class="eyebrow">Papan Status Layanan</span>
+            <div id="livedate">Memuat tanggal…</div>
           </div>
-          <div class="profil-text">
-            <p>UPTD Puskesmas Tegowanu merupakan salah satu puskesmas di Kabupaten Grobogan yang terletak di Kecamatan Tegowanu. Wilayah kerjanya mencakup 13 desa dan berbatasan langsung dengan Demak, Tanggungharjo, Godong, serta Karangrayung.</p>
-            <p>Kami berkomitmen memberikan pelayanan kesehatan yang cepat, akurat, dan aman bagi seluruh masyarakat di wilayah kerja kami, didukung oleh jaringan Puskesmas Pembantu dan Pos Kesehatan Desa.</p>
-            <div class="vismis">
-              <div class="card">
-                <h4>Visi</h4>
-                <p>“Pelayanan kesehatan menuju masyarakat Tegowanu sehat”</p>
-              </div>
-              <div class="card amber">
-                <h4>Misi</h4>
-                <p>“Mewujudkan pelayanan kesehatan yang bermutu sehingga tercapai 
-derajat kesehatan masyarakat yang optimal dengan mendorong 
-kemandirian masyarakat untuk berperilaku hidup bersih dan sehat"</p>
+          <div id="liveclock">--:--:--</div>
+        </div>
+
+        <div id="statusPill" class="status-pill status-open"><span class="dot"></span> Memeriksa status…</div>
+
+        <div class="sched-row">
+          <div class="label">PONED<small>Gawat darurat & rawat inap</small></div>
+          <div class="time">24 JAM</div>
+        </div>
+        
+        <div class="sched-row">
+          <div class="label">Jam Pelayanan<small>Poli umum, KIA, gigi, dll.</small></div>
+          <div class="time" id="todaySchedule">--.-- – --.-- WIB</div>
+        </div>
+
+        <div class="emergency-strip">
+          <span>Kondisi darurat?</span>
+          <a href="https://wa.me/6281215935791">Hubungi PONED →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="wrap">
+        <div class="hstat"><div class="num">13</div><div class="lab">Desa Wilayah Kerja</div></div>
+        <div class="hstat"><div class="num">67</div><div class="lab">Posyandu Balita</div></div>
+        <div class="hstat"><div class="num">9</div><div class="lab">Poskesdes / PKD</div></div>
+        <div class="hstat"><div class="num">24/7</div><div class="lab">Layanan PONED</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tentang-kami-section reveal" id="tentang-kami">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Tentang Kami</span>
+        <h2>Informasi & Layanan Puskesmas</h2>
+        <p>Pilih tombol di bawah untuk melihat profil atau layanan pengaduan.</p>
+      </div>
+
+      <div class="about-tabs">
+        <button class="tab-btn active" onclick="showAboutSlide(0)">Profil Puskesmas</button>
+        <button class="tab-btn" onclick="showAboutSlide(1)">Pengaduan Masyarakat</button>
+      </div>
+
+      <div class="about-slider-container">
+        <div class="about-slide active" id="slide-0">
+          <div class="profil-grid">
+            <div class="profil-media">
+              <img src="img/profil.jpg" alt="Profil Puskesmas Tegowanu" onerror="this.src='https://placehold.co/600x450?text=Foto+Gedung'">
+            </div>
+            <div class="profil-text">
+              <p>UPTD Puskesmas Tegowanu merupakan salah satu puskesmas di Kabupaten Grobogan yang terletak di Kecamatan Tegowanu. Wilayah kerjanya mencakup 13 desa dan berbatasan langsung dengan Demak, Tanggungharjo, Godong, serta Karangrayung.</p>
+              <p>Kami berkomitmen memberikan pelayanan kesehatan yang cepat, akurat, dan aman bagi seluruh masyarakat di wilayah kerja kami, didukung oleh jaringan Puskesmas Pembantu dan Pos Kesehatan Desa.</p>
+              <div class="vismis">
+                <div class="card">
+                  <h4>Visi</h4>
+                  <p>“Pelayanan kesehatan menuju masyarakat Tegowanu sehat”</p>
+                </div>
+                <div class="card amber">
+                  <h4>Misi</h4>
+                  <p>“Mewujudkan pelayanan kesehatan yang bermutu sehingga tercapai derajat kesehatan masyarakat yang optimal dengan mendorong kemandirian masyarakat untuk berperilaku hidup bersih dan sehat"</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Slide 2: Pengaduan -->
-      <div class="about-slide" id="slide-1">
-        <div class="info-box-full">
-          <h3>💬 Layanan Pengaduan Masyarakat</h3>
-          <p>Punya kendala atau keluhan terkait pelayanan medis maupun fasilitas di UPTD Puskesmas Tegowanu? Laporkan langsung melalui saluran resmi kami secara cepat.</p>
-          <a href="https://wa.me/6281215935791" class="btn btn-primary" target="_blank">Kirim Pengaduan via WhatsApp</a>
-        </div>
-      </div>
-
-      <!-- Slide 3: Pengisian Pelayanan -->
-      <div class="about-slide" id="slide-2">
-        <div class="info-box-full">
-          <h3>📋 Survey & Pengisian Pelayanan</h3>
-          <p>Bantu kami menjadi lebih baik dengan mengisi kuesioner survey kepuasan masyarakat terhadap layanan rawat jalan maupun rawat inap yang Anda terima.</p>
-          <a href="#kontak" class="btn btn-outline nav-link">Hubungi Kontak Kami →</a>
+        <div class="about-slide" id="slide-1">
+          <div class="info-box-full">
+            <h3>💬 Layanan Pengaduan Masyarakat</h3>
+            <p>Punya kendala atau keluhan terkait pelayanan medis maupun fasilitas di UPTD Puskesmas Tegowanu? Laporkan langsung melalui saluran resmi kami secara cepat.</p>
+            <a href="https://wa.me/6281215935791" class="btn btn-primary" target="_blank">Kirim Pengaduan via WhatsApp</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="layanan reveal" id="layanan">
+  <section class="layanan reveal" id="layanan">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="color:#8FD6BF;">Program Puskesmas</span>
+        <h2>Layanan Kami</h2>
+        <p>Dua upaya utama yang kami jalankan, didukung lima klaster pelayanan sesuai siklus hidup masyarakat.</p>
+      </div>
+      <div class="ukp-ukm">
+        <div class="uk-card">
+          <div class="ic">P</div>
+          <div>
+            <h4>Upaya Kesehatan Perorangan (UKP)</h4>
+            <p>Pelayanan untuk peningkatan, pencegahan, penyembuhan penyakit, serta pemulihan kesehatan perseorangan.</p>
+          </div>
+        </div>
+        <div class="uk-card">
+          <div class="ic">M</div>
+          <div>
+            <h4>Upaya Kesehatan Masyarakat (UKM)</h4>
+            <p>Pemberdayaan masyarakat untuk mencegah penyakit dan meningkatkan derajat kesehatan secara kolektif.</p>
+          </div>
+        </div>
+      </div>
+      <div class="klaster-grid">
+        <div class="kcard"><span class="knum">Klaster 01</span><h4>Manajemen</h4><p>Pengelolaan pelayanan puskesmas agar berjalan baik dan bermutu.</p></div>
+        <div class="kcard"><span class="knum">Klaster 02</span><h4>Ibu & Anak</h4><p>Pelayanan ibu, bayi, balita, remaja, dan anak sekolah.</p></div>
+        <div class="kcard"><span class="knum">Klaster 03</span><h4>Usia Produktif & Lansia</h4><p>Pelayanan bagi kelompok usia produktif dan lanjut usia.</p></div>
+        <div class="kcard"><span class="knum">Klaster 04</span><h4>Penyakit Menular</h4><p>Pencegahan dan penanggulangan penyakit menular.</p></div>
+        <div class="kcard"><span class="knum">Lintas Klaster</span><h4>Penunjang & Program</h4><p>Dukungan lintas program dan layanan penunjang lainnya.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri" class="reveal">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Dokumentasi</span>
+        <h2>Galeri Kegiatan</h2>
+        <p>Potret pengabdian dan dedikasi kami kepada masyarakat Tegowanu.</p>
+      </div>
+      <div class="galeri-grid">
+        <div class="gitem">
+          <img src="img/kegiatan6.png" alt="Kegiatan 1" onerror="this.src='https://placehold.co/400x400'">
+          <div class="overlay">
+            <h4>Posyandu & Imunisasi</h4>
+            <p>Pemantauan tumbuh kembang balita di wilayah kerja.</p>
+          </div>
+        </div>
+        <div class="gitem">
+          <img src="img/kegiatan2.png" alt="Kegiatan 2" onerror="this.src='https://placehold.co/400x200'">
+          <div class="overlay">
+            <h4>Penghijauan Bumi</h4>
+            <p>Edukasi Penghijauan dengan menanam pohon dan merawatnya.</p>
+          </div>
+        </div>
+        <div class="gitem">
+          <img src="img/kegiatan3.png" alt="Kegiatan 3" onerror="this.src='https://placehold.co/400x200'">
+          <div class="overlay">
+            <h4>Program Kesehatan </h4>
+            <p>Rutinitas kegiatan senam dalam rangka untuk menjaga kesehatan.</p>
+          </div>
+        </div>
+        <div class="gitem">
+          <img src="img/kegiatan4.jpg" alt="Kegiatan 4" onerror="this.src='https://placehold.co/400x200'">
+          <div class="overlay">
+            <h4>LOKMIN</h4>
+            <p>Mengevaluasi kinerja, merencanakan kegiatan, dan memperkuat kerja sama tim.</p>
+          </div>
+        </div>
+        <div class="gitem">
+          <img src="img/kegiatan5.jpg" alt="Kegiatan 5" onerror="this.src='https://placehold.co/400x200'">
+          <div class="overlay">
+            <h4>Pengecekan kandungan</h4>
+            <p>Pengecekan kondisi janin ketika masih dalam kandungan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="berita reveal" id="berita">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Informasi Terkini</span>
+        <h2>Berita & Kegiatan Puskesmas</h2>
+        <p>Ikuti perkembangan informasi terbaru seputar kesehatan, jadwal kegiatan, dan pengumuman penting.</p>
+      </div>
+      <div class="berita-grid">
+        <div class="bcard" onclick="openArticle(1)">
+          <div class="bcard-img"><img src="img/kegiatan9.jpeg" alt="Berita 1" onerror="this.src='https://placehold.co/300x200'"></div>
+          <div class="bcard-body">
+            <span class="bcard-date">02 Mei 2026</span>
+            <h4>Posyandu & Imunisasi Bersama Warga</h4>
+            <p>Puskesmas Tegowanu menggelar posyandu guna mengevaluasi capaian program kesehatan balita di desa...</p>
+            <button class="bcard-link">Baca Selengkapnya →</button>
+          </div>
+        </div>
+        <div class="bcard" onclick="openArticle(2)">
+          <div class="bcard-img"><img src="img/kegiatan8.jpeg" alt="Berita 2" onerror="this.src='https://placehold.co/300x200'"></div>
+          <div class="bcard-body">
+            <span class="bcard-date">28 April 2026</span>
+            <h4>Penyuluhan Pola Hidup Sehat</h4>
+            <p>Tim kesehatan memberikan edukasi manfaat gerakan kecil dan senam pagi...</p>
+            <button class="bcard-link">Baca Selengkapnya →</button>
+          </div>
+        </div>
+        <div class="bcard" onclick="openArticle(3)">
+          <div class="bcard-img"><img src="img/kegiatan10.jpeg" alt="Berita 3" onerror="this.src='https://placehold.co/300x200'"></div>
+          <div class="bcard-body">
+            <span class="bcard-date">15 April 2026</span>
+            <h4>Pelayanan Kesehatan Berkala Anak Sekolah</h4>
+            <p>Pemeriksaan kesehatan gigi dan umum rutin dilaksanakan langsung ke sekolah-sekolah...</p>
+            <button class="bcard-link">Baca Selengkapnya →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip reveal">
+    <div class="wrap">
+      <div>
+        <h3>Ada keluhan atau butuh informasi layanan?</h3>
+        <p>Tim kami siap membantu melalui WhatsApp atau formulir pengaduan resmi.</p>
+      </div>
+      <a href="https://wa.me/6281215935791" class="btn" style="background:var(--teal-900); color:#fff;">Chat via WhatsApp →</a>
+    </div>
+  </section>
+
+  <section class="kontak reveal" id="kontak">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Kontak</span>
+        <h2>Lokasi & Informasi Kontak</h2>
+      </div>
+      <div class="kontak-grid">
+        <div class="kontak-info">
+          <h3>UPTD Puskesmas Tegowanu</h3>
+          <div class="kinfo-row">
+            <div class="ic">📍</div>
+            <div class="t"><strong>Alamat</strong><span>Jl. Raya Purwodadi - Semarang, Mbah Jembangan, Tegowanu Kulon, Kec. Tegowanu, Kab. Grobogan 58165</span></div>
+          </div>
+          <div class="kinfo-row">
+            <div class="ic">☎️</div>
+            <div class="t"><strong>Telepon</strong><span>081215935791</span></div>
+          </div>
+          <div class="kinfo-row">
+            <div class="ic">💬</div>
+            <div class="t"><strong>WhatsApp</strong><span>081215935791</span></div>
+          </div>
+          <div class="kinfo-row">
+            <div class="ic">🕒</div>
+            <div class="t"><strong>Jam Pelayanan</strong><span>PONED 24 Jam · Senin-Kamis 07.30-13.00, Jumat 07.30-11.00, Sabtu 07.30-12.00, Minggu Libur</span></div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <div class="pin"></div>
+          <span><strong>Peta lokasi</strong><br>Puskesmas Tegowanu</span>
+          <small>&lt;<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.652300883213!2d110.60023267517163!3d-7.050080669084509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70915844367e51%3A0x26e2d47e0f1d6c9e!2sPuskesmas%20Tegowanu!5e0!3m2!1sid!2sid!4v1785305603633!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></small>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================== -->
+<!-- WRAPPER HALAMAN ARTIKEL BACA BERITA -->
+<!-- ============================================== -->
+<div id="article-view" class="page-view view-section">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow" style="color:#8FD6BF;">Program Puskesmas</span>
-      <h2>Layanan Kami</h2>
-      <p>Dua upaya utama yang kami jalankan, didukung lima klaster pelayanan sesuai siklus hidup masyarakat.</p>
-    </div>
-    <div class="ukp-ukm">
-      <div class="uk-card">
-        <div class="ic">P</div>
-        <div>
-          <h4>Upaya Kesehatan Perorangan</h4>
-          <p>Pelayanan untuk peningkatan, pencegahan, penyembuhan penyakit, serta pemulihan kesehatan perseorangan.</p>
-        </div>
-      </div>
-      <div class="uk-card">
-        <div class="ic">M</div>
-        <div>
-          <h4>Upaya Kesehatan Masyarakat</h4>
-          <p>Pemberdayaan masyarakat untuk mencegah penyakit dan meningkatkan derajat kesehatan secara kolektif.</p>
-        </div>
-      </div>
-    </div>
-    <div class="klaster-grid">
-      <div class="kcard"><span class="knum">Klaster 01</span><h4>Manajemen</h4><p>Pengelolaan pelayanan puskesmas agar berjalan baik dan bermutu.</p></div>
-      <div class="kcard"><span class="knum">Klaster 02</span><h4>Ibu & Anak</h4><p>Pelayanan ibu, bayi, balita, remaja, dan anak sekolah.</p></div>
-      <div class="kcard"><span class="knum">Klaster 03</span><h4>Usia Produktif & Lansia</h4><p>Pelayanan bagi kelompok usia produktif dan lanjut usia.</p></div>
-      <div class="kcard"><span class="knum">Klaster 04</span><h4>Penyakit Menular</h4><p>Pencegahan dan penanggulangan penyakit menular.</p></div>
-      <div class="kcard"><span class="knum">Lintas Klaster</span><h4>Penunjang & Program</h4><p>Dukungan lintas program dan layanan penunjang lainnya.</p></div>
+    <div class="page-container">
+      <a onclick="openView('main-view', 'berita')" class="page-back">← Kembali ke Berita</a>
+      <span class="article-date" id="art-date" style="color:var(--amber-500); font-family:monospace; font-weight:700; margin-bottom:12px; display:block;"></span>
+      <h1 class="page-title" id="art-title"></h1>
+      <img src="" alt="Gambar Berita" class="article-hero-img" id="art-img" style="width:100%; border-radius:12px; margin: 30px 0;">
+      <div class="article-body" id="art-body" style="font-size:1.05rem; line-height:1.8; color:var(--ink-soft);"></div>
     </div>
   </div>
-</section>
+</div>
 
-<section id="galeri" class="reveal">
+<!-- ============================================== -->
+<!-- WRAPPER HALAMAN BARU: TARIF LAYANAN -->
+<!-- ============================================== -->
+<div id="tarif-view" class="page-view view-section">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Dokumentasi</span>
-      <h2>Galeri Kegiatan</h2>
-      <p>Potret pengabdian dan dedikasi kami kepada masyarakat Tegowanu.</p>
-    </div>
-    <div class="galeri-grid">
-      <div class="gitem">
-        <img src="img/kegiatan6.png" alt="Kegiatan 1">
-        <div class="overlay">
-          <h4>Posyandu & Imunisasi</h4>
-          <p>Pemantauan tumbuh kembang balita di wilayah kerja.</p>
-        </div>
+    <div class="page-container">
+      <a onclick="openView('main-view')" class="page-back">← Kembali ke Beranda</a>
+      <h1 class="page-title">Tarif Layanan Puskesmas</h1>
+      <p class="page-desc">Daftar tarif retribusi pelayanan kesehatan di UPTD Puskesmas Tegowanu sesuai dengan peraturan daerah yang berlaku.</p>
+      
+      <div class="tabel-klaster">
+        <h3>Pemeriksaan Umum & Tindakan Medik</h3>
+        <table class="data-table">
+          <tr><th>No</th><th>Judul Jenis Layanan</th><th>Biaya Total</th></tr>
+          <tr><td>1</td><td>Pelayanan Rawat Jalan</td><td>Rp10.000,00</td></tr>
+          <tr><td>2</td><td>Kedaruratan Medik</td><td>Rp20.000,00</td></tr>
+          <tr><td>3</td><td>Pelayanan Kunjungan Rumah</td><td>Rp35.000,00</td></tr>
+          <tr><td>4</td><td>Tindakan Medik Kategori I</td><td>Rp30.000,00</td></tr>
+          <tr><td>5</td><td>Tindakan Medik Kategori II</td><td>Rp50.000,00</td></tr>
+          <tr><td>6</td><td>Tindakan Medik Kategori III</td><td>Rp75.000,00</td></tr>
+        </table>
       </div>
-      <div class="gitem">
-        <img src="img/kegiatan2.png" alt="Kegiatan 2">
-        <div class="overlay">
-          <h4>Penghijauan Bumi</h4>
-          <p>Edukasi Penghijauan dengan menanam pohon dan merawatnya.</p>
-        </div>
-      </div>
-      <div class="gitem">
-        <img src="img/kegiatan3.png" alt="Kegiatan 3">
-        <div class="overlay">
-          <h4>Program Kesehatan </h4>
-          <p>Rutinitas kegiatan senam dalam rangka untuk menjaga kesehatan.</p>
-        </div>
-      </div>
-      <div class="gitem">
-        <img src="img/kegiatan4.jpg" alt="Kegiatan 4">
-        <div class="overlay">
-          <h4>LOKMIN</h4>
-          <p>mengevaluasi kinerja, merencanakan kegiatan, dan memperkuat kerja sama tim.</p>
-        </div>
-      </div>
-      <div class="gitem">
-        <img src="img/kegiatan5.jpg" alt="Kegiatan 5">
-        <div class="overlay">
-          <h4>Pengecekan kandugan</h4>
-          <p>Pengecekan kondisi anak ketika masih dalam kandungan.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- SECTION BERITA (DIPINDAHKAN KE PALING BAWAH SEBELUM KONTAK) -->
-<section class="berita reveal" id="berita">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Informasi Terkini</span>
-      <h2>Berita & Kegiatan Puskesmas Tegowanu</h2>
-      <p>Ikuti perkembangan informasi terbaru seputar kesehatan, jadwal kegiatan, dan pengumuman penting dari puskesmas.</p>
-    </div>
-    <div class="berita-grid">
-      <div class="bcard">
-        <div class="bcard-img"><img src="img/kegiatan9.jpeg" alt="Berita 1"></div>
-        <div class="bcard-body">
-          <span class="bcard-date">02 Mei 2026</span>
-          <h4>Posyandu & Imunisasi Bersama Warga</h4>
-          <p>Puskesmas Tegowanu menggelar posyandu guna mengevaluasi capaian program kesehatan balita di desa...</p>
-          <a href="#berita" class="bcard-link">Baca Selengkapnya →</a>
-        </div>
+      <div class="tabel-klaster">
+        <h3>Kesehatan Ibu, Anak (KIA) & Keluarga Berencana (KB)</h3>
+        <table class="data-table">
+          <tr><th>No</th><th>Judul Jenis Layanan</th><th>Biaya Total</th></tr>
+          <tr><td>1</td><td>Persalinan Normal</td><td>Rp1.000.000,00</td></tr>
+          <tr><td>2</td><td>Persalinan dengan Penyulit (Abnormal)</td><td>Rp1.200.000,00</td></tr>
+          <tr><td>3</td><td>Pelayanan Tindakan Paska Persalinan</td><td>Rp250.000,00</td></tr>
+          <tr><td>4</td><td>Pelayanan Pra Rujukan Pada Komplikasi</td><td>Rp200.000,00</td></tr>
+          <tr><td>5</td><td>Penanganan Komplikasi KB Paska Persalinan</td><td>Rp200.000,00</td></tr>
+          <tr><td>6</td><td>Pelayanan KB Suntik</td><td>Rp20.000,00</td></tr>
+          <tr><td>7</td><td>Pelayanan KB Implant</td><td>Rp75.000,00</td></tr>
+          <tr><td>8</td><td>Pelayanan KB IUD</td><td>Rp75.000,00</td></tr>
+        </table>
       </div>
-      <div class="bcard">
-        <div class="bcard-img"><img src="img/kegiatan8.jpeg" alt="Berita 2"></div>
-        <div class="bcard-body">
-          <span class="bcard-date">28 April 2026</span>
-          <h4>Penyuluhan Pola Hidup  Sehat</h4>
-          <p>Tim kesehatan memberikan edukasi manfaat gerakan kecil dan senam pagi...</p>
-          <a href="#berita" class="bcard-link">Baca Selengkapnya →</a>
-        </div>
-      </div>
-      <div class="bcard">
-        <div class="bcard-img"><img src="img/kegiatan10.jpeg" alt="Berita 3"></div>
-        <div class="bcard-body">
-          <span class="bcard-date">15 April 2026</span>
-          <h4>Pelayanan Kesehatan Berkala Anak Sekolah</h4>
-          <p>Pemeriksaan kesehatan gigi dan umum rutin dilaksanakan langsung ke sekolah-sekolah di wilayah Tegowanu...</p>
-          <a href="#berita" class="bcard-link">Baca Selengkapnya →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="cta-strip reveal">
-  <div class="wrap">
-    <div>
-      <h3>Ada keluhan atau butuh informasi layanan?</h3>
-      <p>Tim kami siap membantu melalui WhatsApp atau formulir pengaduan resmi.</p>
-    </div>
-    <a href="https://wa.me/6281215935791" class="btn" style="background:var(--teal-900); color:#fff;">Chat via WhatsApp →</a>
-  </div>
-</section>
+      <div class="tabel-klaster">
+        <h3>Pemeriksaan & Tindakan Gigi</h3>
+        <table class="data-table">
+          <tr><th>No</th><th>Judul Jenis Layanan</th><th>Biaya Total</th></tr>
+          <tr><td>1</td><td>Tindakan Gigi Penambalan Sementara</td><td>Rp30.000,00</td></tr>
+          <tr><td>2</td><td>Tindakan Gigi Penambalan gigi tetap</td><td>Rp60.000,00</td></tr>
+          <tr><td>3</td><td>Tindakan Gigi Pencabutan gigi susu</td><td>Rp30.000,00</td></tr>
+          <tr><td>4</td><td>Tindakan Gigi Pencabutan gigi tetap</td><td>Rp75.000,00</td></tr>
+          <tr><td>5</td><td>Tindakan Gigi Insisi abses</td><td>Rp30.000,00</td></tr>
+          <tr><td>6</td><td>Tindakan Gigi Pencabutan gigi impaksi</td><td>Rp100.000,00</td></tr>
+        </table>
+      </div>
 
-<section class="kontak reveal" id="kontak">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Kontak</span>
-      <h2>Lokasi & Informasi Kontak</h2>
-    </div>
-    <div class="kontak-grid">
-      <div class="kontak-info">
-        <h3>UPTD Puskesmas Tegowanu</h3>
-        <div class="kinfo-row">
-          <div class="ic">📍</div>
-          <div class="t"><strong>Alamat</strong><span>Jl. Raya Purwodadi - Semarang, Mbah Jembangan, Tegowanu Kulon, Kec. Tegowanu, Kabupaten Grobogan, Jawa Tengah 58165</span></div>
-        </div>
-        <div class="kinfo-row">
-          <div class="ic">☎️</div>
-          <div class="t"><strong>Telepon</strong><span>(0292) xxx-xxx — ganti dengan nomor asli</span></div>
-        </div>
-        <div class="kinfo-row">
-          <div class="ic">💬</div>
-          <div class="t"><strong>WhatsApp</strong><span>081215935791</span></div>
-        </div>
-        <div class="kinfo-row">
-          <div class="ic">✉️</div>
-          <div class="t"><strong>Email</strong><span>puskesmastegowanu@contoh.go.id</span></div>
-        </div>
-        <div class="kinfo-row">
-          <div class="ic">🕒</div>
-          <!-- Ringkasan Jam Pelayanan di Kontak tetap dipertahankan karena lebih rapi di sini -->
-          <div class="t"><strong>Jam Pelayanan</strong><span>UGD 24 Jam · Senin-Kamis 07.30-13.00, Jumat 07.30-11.00, Sabtu 07.30-12.00</span></div>
-        </div>
+      <div class="tabel-klaster">
+        <h3>Laboratorium & Penunjang Diagnostik</h3>
+        <table class="data-table">
+          <tr><th>No</th><th>Judul Jenis Layanan</th><th>Biaya Total</th></tr>
+          <tr><td>1</td><td>Pemeriksaan Laboratorium Sederhana</td><td>Rp17.500,00</td></tr>
+          <tr><td>2</td><td>Pemeriksaan Laboratorium Sedang</td><td>Rp26.500,00</td></tr>
+          <tr><td>3</td><td>Pemeriksaan Laboratorium Besar</td><td>Rp38.500,00</td></tr>
+          <tr><td>4</td><td>Pemeriksaan Laboratorium Canggih</td><td>Rp52.500,00</td></tr>
+          <tr><td>5</td><td>Pelayanan USG</td><td>Rp50.000,00</td></tr>
+          <tr><td>6</td><td>EKG</td><td>Rp25.000,00</td></tr>
+        </table>
       </div>
-      <div class="map-embed">
-        <div class="pin"></div>
-        <span><strong>Peta lokasi</strong><br>Puskesmas Tegowanu</span>
-        <small>&lt;<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.652300883213!2d110.60023267517163!3d-7.050080669084509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70915844367e51%3A0x26e2d47e0f1d6c9e!2sPuskesmas%20Tegowanu!5e0!3m2!1sid!2sid!4v1785305603633!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></small>
+
+      <div class="tabel-klaster">
+        <h3>Pelayanan Mobil Ambulan & Jenazah</h3>
+        <table class="data-table">
+          <tr><th>No</th><th>Judul Jenis Layanan</th><th>Biaya Total</th></tr>
+          <tr><td>1</td><td>Pelayanan Mobil Ambulan Jarak < 10 km</td><td>Rp150.000,00</td></tr>
+          <tr><td>2</td><td>Pelayanan Mobil Ambulan Jarak 11 - 35 km</td><td>Rp275.000,00</td></tr>
+          <tr><td>3</td><td>Pelayanan Mobil Ambulan Jarak > 35 km</td><td>Rp275.000,00</td></tr>
+          <tr><td>4</td><td>Pelayanan Mobil Jenazah Jarak < 10 km</td><td>Rp130.000,00</td></tr>
+          <tr><td>5</td><td>Pelayanan Mobil Jenazah Jarak 11 - 35 km</td><td>Rp250.000,00</td></tr>
+          <tr><td>6</td><td>Pelayanan Mobil Jenazah Jarak > 35 km</td><td>Rp250.000,00</td></tr>
+        </table>
+      </div>
+
+      <div class="tabel-klaster">
+        <h3>Pengujian Kesehatan & Visum</h3>
+        <table class="data-table">
+          <tr><th>No</th><th>Judul Jenis Layanan</th><th>Biaya Total</th></tr>
+          <tr><td>1</td><td>Pengujian Kesehatan Pelajar</td><td>Rp3.000,00</td></tr>
+          <tr><td>2</td><td>Pengujian Kesehatan Masyarakat Umum</td><td>Rp10.000,00</td></tr>
+          <tr><td>3</td><td>Pengujian Kesehatan Calon Pengantin</td><td>Rp20.000,00</td></tr>
+          <tr><td>4</td><td>Pengujian Kesehatan Calon Haji</td><td>Rp10.000,00</td></tr>
+          <tr><td>5</td><td>Visum et Repertum Pemeriksaan Luar</td><td>Rp15.000,00</td></tr>
+          <tr><td>6</td><td>Visum et Repertum Jasa Raharja</td><td>Rp15.000,00</td></tr>
+          <tr><td>7</td><td>Visum et Repertum Asuransi</td><td>Rp15.000,00</td></tr>
+          <tr><td>8</td><td>Visum et Repertum Visum luar jenazah</td><td>Rp75.000,00</td></tr>
+        </table>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ============================================== -->
+<!-- WRAPPER HALAMAN BARU: STANDAR LAYANAN -->
+<!-- ============================================== -->
+<div id="standar-layanan-view" class="page-view view-section">
+  <div class="wrap">
+    <div class="page-container">
+      <a onclick="openView('main-view')" class="page-back">← Kembali ke Beranda</a>
+      <h1 class="page-title">Standar Pelayanan Minimal</h1>
+      <p class="page-desc">Berikut adalah rincian jenis layanan, persyaratan, dan waktu penyelesaian di lingkungan UPTD Puskesmas Tegowanu.</p>
+      
+      <div class="tabel-klaster">
+        <h3>1. Pelayanan Pendaftaran & Rekam Medis</h3>
+        <table class="data-table layanan-table">
+          <tr><th style="width:5%">No</th><th style="width:30%">Jenis Pelayanan</th><th style="width:35%">Persyaratan</th><th>Waktu Penyelesaian</th></tr>
+          <tr><td>1</td><td>Pendaftaran Pasien Lama</td><td>Membawa Kartu Identitas Berobat (KIB), KTP/KK, Kartu BPJS.</td><td>Maksimal 5 Menit</td></tr>
+          <tr><td>2</td><td>Pendaftaran Pasien Baru</td><td>Membawa KTP/KK asli dan fotokopi, Kartu BPJS.</td><td>Maksimal 10 Menit</td></tr>
+        </table>
+      </div>
+
+      <div class="tabel-klaster">
+        <h3>2. Pelayanan Pemeriksaan Umum</h3>
+        <table class="data-table layanan-table">
+          <tr><th style="width:5%">No</th><th style="width:30%">Jenis Pelayanan</th><th style="width:35%">Persyaratan</th><th>Waktu Penyelesaian</th></tr>
+          <tr><td>1</td><td>Pemeriksaan Rawat Jalan Umum</td><td>Rekam Medis dari pendaftaran, Nomor Antrean.</td><td>10 - 15 Menit / Pasien</td></tr>
+          <tr><td>2</td><td>Pembuatan Surat Keterangan Sehat</td><td>Membawa pas foto 3x4, KTP/Kartu Pelajar.</td><td>15 Menit</td></tr>
+        </table>
+      </div>
+
+      <div class="tabel-klaster">
+        <h3>3. Pelayanan Kesehatan Gigi & Mulut</h3>
+        <table class="data-table layanan-table">
+          <tr><th style="width:5%">No</th><th style="width:30%">Jenis Pelayanan</th><th style="width:35%">Persyaratan</th><th>Waktu Penyelesaian</th></tr>
+          <tr><td>1</td><td>Pemeriksaan & Konsultasi Gigi</td><td>Rekam Medis dari pendaftaran, Nomor Antrean.</td><td>15 Menit</td></tr>
+          <tr><td>2</td><td>Pencabutan / Penambalan Gigi</td><td>Rekam Medis, kondisi pasien memungkinkan (tensi normal).</td><td>30 - 45 Menit</td></tr>
+        </table>
+      </div>
+
+      <div class="tabel-klaster">
+        <h3>4. Pelayanan KIA (Kesehatan Ibu & Anak) / KB</h3>
+        <table class="data-table layanan-table">
+          <tr><th style="width:5%">No</th><th style="width:30%">Jenis Pelayanan</th><th style="width:35%">Persyaratan</th><th>Waktu Penyelesaian</th></tr>
+          <tr><td>1</td><td>Pemeriksaan Ibu Hamil (ANC)</td><td>Buku KIA (Pink), Kartu Identitas Berobat.</td><td>20 - 30 Menit</td></tr>
+          <tr><td>2</td><td>Pelayanan Keluarga Berencana (KB)</td><td>Kartu Akseptor KB, Rekam Medis.</td><td>15 - 20 Menit</td></tr>
+        </table>
+      </div>
+
+      <div class="tabel-klaster">
+        <h3>5. Pelayanan Farmasi / Apotek</h3>
+        <table class="data-table layanan-table">
+          <tr><th style="width:5%">No</th><th style="width:30%">Jenis Pelayanan</th><th style="width:35%">Persyaratan</th><th>Waktu Penyelesaian</th></tr>
+          <tr><td>1</td><td>Pelayanan Resep Obat Non Racikan</td><td>Membawa kertas resep dari dokter poli.</td><td>Maksimal 15 Menit</td></tr>
+          <tr><td>2</td><td>Pelayanan Resep Obat Racikan (Puyer/Salep)</td><td>Membawa kertas resep dari dokter poli.</td><td>Maksimal 30 Menit</td></tr>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- ============================================== -->
+<!-- WRAPPER HALAMAN BARU: SURVEY KEPUASAN -->
+<!-- ============================================== -->
+<div id="survey-view" class="page-view view-section">
+  <div class="wrap">
+    <div class="page-container" style="text-align: center;">
+      <a onclick="openView('main-view')" class="page-back" style="float: left;">← Kembali ke Beranda</a>
+      <div style="clear: both;"></div>
+      
+      <h1 class="page-title">Survey Kepuasan Masyarakat</h1>
+      <p class="page-desc">Suara Anda sangat berarti bagi peningkatan kualitas pelayanan kami. Silakan isi form di bawah ini.</p>
+      
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSePlaceholderFormID12345/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border: 1px solid var(--line); border-radius: 12px; background: #f9f9f9;">Memuat formulir survey...</iframe>
+      
+      <div style="margin-top: 50px; padding-top: 30px; border-top: 1px dashed var(--line);">
+        <button class="btn btn-outline" onclick="lihatHasilSurvey()" style="font-size: 0.8rem; padding: 6px 12px; color: var(--ink-soft); border-color: var(--line);">Akses Panel Admin (Hasil Survey)</button>
+        
+        <div id="survey-result-link" style="display: none; margin-top: 20px; background: var(--teal-100); padding: 20px; border-radius: 8px;">
+          <h4 style="margin-bottom: 10px;">Akses Berhasil Diberikan</h4>
+          <a href="https://docs.google.com/spreadsheets/d/1PlaceholderSpreadsheetID/" target="_blank" class="btn btn-primary">Buka Format Hasil G-Form (Spreadsheet)</a>
+          <p style="font-size: 0.8rem; margin-top: 10px; color: var(--ink-soft);">Halaman ini terbuka di tab baru. Pastikan akun Google Anda memiliki hak akses baca ke file tersebut.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
         <div class="foot-brand">
-          <div class="mark" style="width:40px;height:40px;font-size:1rem;">PT</div>
+          <div class="mark" style="width:40px;height:40px;font-size:1rem;background:var(--teal-500);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;">PT</div>
           <div class="name" style="color:#fff;">UPTD Puskesmas<br>Tegowanu</div>
         </div>
         <p>Melayani masyarakat Kecamatan Tegowanu dan sekitarnya dengan sepenuh hati.</p>
       </div>
       <div>
-        <h5>Navigasi</h5>
+        <h5>Navigasi Utama</h5>
         <ul>
-          <li><a href="#beranda" class="nav-link">Beranda</a></li>
-          <li><a href="#tentang-kami" class="nav-link">Tentang Kami</a></li>
-          <li><a href="#layanan" class="nav-link">Layanan</a></li>
-          <li><a href="#berita" class="nav-link">Berita</a></li>
-          <li><a href="#galeri" class="nav-link">Galeri</a></li>
+          <li><a href="#" onclick="openView('main-view'); return false;">Beranda Utama</a></li>
+          <li><a href="#" onclick="openView('tarif-view'); return false;">Tarif Layanan</a></li>
+          <li><a href="#" onclick="openView('standar-layanan-view'); return false;">Standar Layanan</a></li>
+          <li><a href="#" onclick="openView('survey-view'); return false;">Survey Kepuasan</a></li>
         </ul>
       </div>
       <div>
         <h5>Layanan Publik</h5>
         <ul>
-          <li><a href="#" onclick="selectAboutTab(1); return false;">Pengaduan</a></li>
-          <li><a href="#" onclick="selectAboutTab(2); return false;">Pengisian Pelayanan</a></li>
-          <li><a href="#kontak" class="nav-link">Alur Pengaduan</a></li>
+          <li><a href="#" onclick="openView('main-view', null, false); setTimeout(()=>selectAboutTab(1), 50); return false;">Pengaduan Online</a></li>
+          <li><a href="#layanan" class="nav-link">Program (UKP/UKM)</a></li>
+          <li><a href="#kontak" class="nav-link">Pusat Bantuan</a></li>
         </ul>
       </div>
       <div>
         <h5>Media Sosial</h5>
         <ul>
-          <li><a href="https://www.instagram.com/puskesmastegowanu?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a></li>
-          <li><a href="https://web.facebook.com/pages/Puskesmas%20Tegowanu/286453508941156/">Facebook</a></li>
-          <li><a href="https://www.tiktok.com/@puskesmas.tegowanu?is_from_webapp=1&sender_device=pc">TikTok</a></li>
-          <li><a href="https://youtube.com/@zuliyaaphdana?si=VCEoItbD-VdxtLE9">YouTube</a></li>
+          <li><a href="https://www.instagram.com/puskesmastegowanu" target="_blank">Instagram</a></li>
+          <li><a href="https://web.facebook.com/pages/Puskesmas%20Tegowanu" target="_blank">Facebook</a></li>
+          <li><a href="https://www.tiktok.com/@puskesmas.tegowanu" target="_blank">TikTok</a></li>
+          <li><a href="https://youtube.com/@zuliyaaphdana" target="_blank">YouTube</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 UPTD Puskesmas Tegowanu — Dinas Kesehatan Kabupaten Grobogan</span>
-      <span>Dibuat dengan Claude</span>
+      <span>Sistem Informasi Terpadu</span>
     </div>
   </div>
 </footer>
 
-<!-- Efek Lightbox Galeri -->
 <div id="lightbox" class="lightbox">
   <span class="close-lightbox">&times;</span>
   <img class="lightbox-content" id="lightbox-img" src="" alt="Gambar Diperbesar">
 </div>
 
 <script>
-  // Menu toggle mobile
-  document.getElementById('menuToggle').addEventListener('click', function(){
-    document.getElementById('navLinks').classList.toggle('open');
-  });
+  let scrollAnimationId = null;
 
-  // Fungsi untuk mengganti slide di bagian Tentang Kami secara interaktif
-  function showAboutSlide(index) {
-    const slides = document.querySelectorAll('.about-slide');
-    const buttons = document.querySelectorAll('.tab-btn');
+  // Manajemen Tampilan SPA
+  function openView(viewId, scrollToSectionId = null, resetScroll = true) {
+    const views = document.querySelectorAll('.view-section');
+    views.forEach(v => v.style.display = 'none');
+    document.getElementById(viewId).style.display = 'block';
+    document.getElementById('navLinks').classList.remove('open');
     
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-    buttons.forEach((btn, i) => {
-      btn.classList.toggle('active', i === index);
-    });
-  }
-
-  // Fungsi dari dropdown header untuk langsung scroll ke section dan mengaktifkan slide terkait
-  function selectAboutTab(index) {
-    const tentangKamiSec = document.getElementById('tentang-kami');
-    if (tentangKamiSec) {
-      document.getElementById('navLinks').classList.remove('open');
-      tentangKamiSec.scrollIntoView({ behavior: 'smooth' });
-      showAboutSlide(index);
+    if(scrollToSectionId) {
+      setTimeout(() => {
+        const sec = document.getElementById(scrollToSectionId);
+        if(sec) customScrollTo(sec);
+      }, 50);
+    } else if (resetScroll) {
+      if (scrollAnimationId) cancelAnimationFrame(scrollAnimationId);
+      window.scrollTo(0, 0);
     }
   }
 
-  // Animasi Smooth Slide Horizontal saat Navigasi Header diklik
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
+  function lihatHasilSurvey() {
+    let pass = prompt("Masukkan Kata Sandi Petugas:");
+    if (pass === "admin123") {
+      document.getElementById("survey-result-link").style.display = "block";
+    } else if (pass !== null) {
+      alert("Kata sandi salah. Anda tidak memiliki akses.");
+    }
+  }
+
+  // CUSTOM SLOW SCROLL ANIMATION (Mulai dari posisi saat ini, tidak lompat ke atas)
+  function customScrollTo(targetSection) {
+    if (scrollAnimationId) {
+      cancelAnimationFrame(scrollAnimationId);
+    }
+
+    const headerOffset = 80;
+    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+    const startPosition = window.pageYOffset; // Posisi layar real-time saat ini
+    const distance = targetPosition - startPosition;
+    
+    const duration = 1500; // Durasi (1.5 detik)
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
       
-      if (targetSection) {
+      if (timeElapsed < duration) {
+        scrollAnimationId = requestAnimationFrame(animation);
+      } else {
+        window.scrollTo(0, targetPosition);
+        scrollAnimationId = null; 
+      }
+    }
+
+    function easeInOutCubic(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t * t + b;
+      t -= 2;
+      return c / 2 * (t * t * t + 2) + b;
+    }
+    
+    scrollAnimationId = requestAnimationFrame(animation);
+  }
+
+  // Listener Navigasi Utama
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      if(this.classList.contains('nav-link')) {
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        e.preventDefault();
+        
+        // Jika sedang di halaman lain (Tarif/Survey), aktifkan main-view terlebih dahulu tanpa mereset posisi scroll
+        if(document.getElementById('main-view').style.display !== 'block') {
+           const views = document.querySelectorAll('.view-section');
+           views.forEach(v => v.style.display = 'none');
+           document.getElementById('main-view').style.display = 'block';
+        }
+        
         document.getElementById('navLinks').classList.remove('open');
-
-        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
-        const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        let duration = 900;
-        let startTime = null;
-
-        function animation(currentTime) {
-          if (startTime === null) startTime = currentTime;
-          let timeElapsed = currentTime - startTime;
-          let run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
-          window.scrollTo(0, run);
-          if (timeElapsed < duration) {
-            requestAnimationFrame(animation);
-          }
+        
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          customScrollTo(targetSection);
         }
-
-        function easeInOutCubic(t, b, c, d) {
-          t /= d / 2;
-          if (t < 1) return c / 2 * t * t * t + b;
-          t -= 2;
-          return c / 2 * (t * t * t + 2) + b;
-        }
-
-        requestAnimationFrame(animation);
       }
     });
   });
 
-  // Live clock + Status board + Jam Pelayanan Dinamis
+  // Tabs Profil & Pengaduan
+  function showAboutSlide(index) {
+    const slides = document.querySelectorAll('.about-slide');
+    const buttons = document.querySelectorAll('.tab-btn');
+    slides.forEach((slide, i) => { slide.classList.toggle('active', i === index); });
+    buttons.forEach((btn, i) => { btn.classList.toggle('active', i === index); });
+  }
+
+  function selectAboutTab(index) {
+    const tentangKamiSec = document.getElementById('tentang-kami');
+    if (tentangKamiSec) {
+      document.getElementById('navLinks').classList.remove('open');
+      customScrollTo(tentangKamiSec);
+      showAboutSlide(index);
+    }
+  }
+
+  // Data Berita
+  const dataBerita = {
+    1: {
+      date: "02 MEI 2026",
+      title: "Posyandu & Imunisasi Bersama Warga, Wujudkan Balita Sehat di Tegowanu",
+      img: "img/kegiatan9.jpeg",
+      body: `
+        <p>UPTD Puskesmas Tegowanu kembali menggelar kegiatan Pos Pelayanan Terpadu (Posyandu) balita dan pemberian imunisasi serentak di beberapa desa dalam wilayah kerja Kecamatan Tegowanu pada hari ini. Kegiatan rutin ini merupakan salah satu pilar utama dari Upaya Kesehatan Masyarakat (UKM) guna memastikan tumbuh kembang balita terpantau dengan baik.</p>
+        <p>Kegiatan yang dimulai sejak pukul 08.00 WIB ini disambut dengan antusiasme tinggi oleh warga. Para ibu membawa balitanya ke posyandu terdekat untuk melakukan penimbangan berat badan, pengukuran tinggi badan, hingga pengecekan lingkar kepala. Data ini sangat krusial untuk mencegah dan mendeteksi risiko stunting sejak dini di wilayah Kabupaten Grobogan.</p>
+        <h3 style="font-family:'Fraunces'; color:var(--teal-900); margin-top:24px; margin-bottom:12px;">Pemberian Vitamin dan Imunisasi Dasar Lengkap</h3>
+        <p>Selain pemantauan fisik, petugas kesehatan dari klaster Ibu & Anak Puskesmas Tegowanu juga memberikan asupan Vitamin A dan imunisasi dasar. Imunisasi yang diberikan mencakup BCG, DPT, Polio, dan Campak, sesuai dengan usia dan kebutuhan masing-masing balita.</p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>Penimbangan dan Pengukuran:</strong> Memastikan kurva pertumbuhan balita berada pada garis normal.</li>
+          <li><strong>Pemberian Makanan Tambahan (PMT):</strong> Edukasi gizi serta pemberian biskuit dan makanan tinggi protein bagi balita.</li>
+          <li><strong>Konseling Tumbuh Kembang:</strong> Ruang bagi ibu untuk berkonsultasi langsung dengan bidan terkait nutrisi dan pola asuh.</li>
+        </ul>
+        <p>"Kehadiran masyarakat hari ini sangat luar biasa. Ini membuktikan tingginya kesadaran warga Tegowanu akan pentingnya kesehatan generasi penerus kita," ujar salah satu Bidan Koordinator Puskesmas Tegowanu.</p>
+      `
+    },
+    2: {
+      date: "28 APRIL 2026",
+      title: "Penyuluhan Pola Hidup Sehat Melalui Gerakan Masyarakat (GERMAS)",
+      img: "img/kegiatan8.jpeg",
+      body: `
+        <p>Dalam rangka meningkatkan kesadaran warga tentang pentingnya menjaga kesehatan di tengah cuaca ekstrem, UPTD Puskesmas Tegowanu melaksanakan penyuluhan Gerakan Masyarakat Hidup Sehat (GERMAS) di Balai Desa setempat.</p>
+        <p>Tim promosi kesehatan dari Klaster Penyakit Tidak Menular Puskesmas Tegowanu memberikan edukasi yang menitikberatkan pada tiga hal utama: melakukan aktivitas fisik rutin selama 30 menit sehari, mengonsumsi buah dan sayur, serta memeriksa kesehatan secara berkala.</p>
+        <h3 style="font-family:'Fraunces'; color:var(--teal-900); margin-top:24px; margin-bottom:12px;">Senam Pagi dan Skrining Kesehatan</h3>
+        <p>Kegiatan ini diawali dengan senam pagi bersama yang diikuti oleh warga dari berbagai kalangan usia, mulai dari remaja hingga lansia. Setelah senam, warga diarahkan menuju posko kesehatan untuk melakukan pemeriksaan atau skrining Penyakit Tidak Menular (PTM).</p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>Cek Tekanan Darah (Tensi):</strong> Deteksi dini hipertensi terutama bagi warga usia lanjut.</li>
+          <li><strong>Cek Gula Darah dan Asam Urat:</strong> Pencegahan penyakit diabetes melitus dan gangguan metabolisme.</li>
+          <li><strong>Edukasi Gizi Seimbang:</strong> Sosialisasi pembatasan konsumsi gula, garam, dan lemak harian.</li>
+        </ul>
+        <p>"Penyakit Tidak Menular seperti hipertensi dan diabetes kerap tidak menunjukkan gejala di awal. Dengan kegiatan skrining proaktif seperti ini, kami harap penanganan dapat dilakukan sedini mungkin agar tidak terjadi komplikasi yang fatal," jelas dokter umum Puskesmas Tegowanu yang bertugas.</p>
+      `
+    },
+    3: {
+      date: "15 APRIL 2026",
+      title: "Pelayanan Kesehatan Berkala untuk Anak Sekolah di Wilayah Tegowanu",
+      img: "img/kegiatan10.jpeg",
+      body: `
+        <p>Sebagai bentuk perhatian terhadap kesehatan generasi muda, UPTD Puskesmas Tegowanu menerjunkan tim medisnya langsung ke sekolah-sekolah mulai dari tingkat SD hingga SMP di wilayah Kecamatan Tegowanu. Kegiatan ini merupakan realisasi dari program Usaha Kesehatan Sekolah (UKS) yang dilaksanakan secara berkala.</p>
+        <p>Anak usia sekolah merupakan kelompok yang rentan terhadap penyakit akibat kebersihan yang kurang terjaga maupun pola jajan sembarangan. Oleh karena itu, kehadiran petugas puskesmas di sekolah sangat penting untuk mendeteksi dini masalah kesehatan siswa agar tidak mengganggu proses belajar mengajar.</p>
+        <h3 style="font-family:'Fraunces'; color:var(--teal-900); margin-top:24px; margin-bottom:12px;">Pemeriksaan Fisik dan Edukasi Perilaku Hidup Bersih</h3>
+        <p>Pemeriksaan difokuskan pada pengecekan dasar yang mencakup kesehatan indra, kebersihan personal, dan status gizi anak-anak. Siswa diajak berinteraksi langsung dengan para tenaga kesehatan dalam suasana yang ramah dan tidak menakutkan.</p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>Kesehatan Gigi dan Mulut:</strong> Pemeriksaan karies gigi oleh perawat gigi serta cara menyikat gigi yang benar.</li>
+          <li><strong>Kesehatan Mata dan Telinga:</strong> Tes ketajaman penglihatan untuk mendeteksi dini mata minus.</li>
+          <li><strong>Kebersihan Personal:</strong> Pemeriksaan rambut, kulit, dan kuku untuk mencegah infeksi cacing dan jamur.</li>
+        </ul>
+        <p>Melalui sinergi yang baik antara pihak sekolah dan Puskesmas Tegowanu, diharapkan dapat terbentuk lingkungan sekolah yang sehat, aman, dan kondusif demi mencetak generasi Tegowanu yang cerdas dan berprestasi.</p>
+      `
+    }
+  };
+
+  function openArticle(id) {
+    const art = dataBerita[id];
+    if(!art) return;
+    
+    document.getElementById('art-date').textContent = art.date;
+    document.getElementById('art-title').textContent = art.title;
+    
+    const imgEl = document.getElementById('art-img');
+    imgEl.src = art.img;
+    imgEl.onerror = function() { this.src = 'https://placehold.co/800x400?text=Gambar+Berita'; };
+    
+    document.getElementById('art-body').innerHTML = art.body;
+    openView('article-view');
+  }
+
+  // Toggle Menu Mobile
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // Jam & Tanggal Papan Status
   const hariNama = ['Minggu','Senin','Selasa','Rabu','Kamis',"Jum'at",'Sabtu'];
   const bulanNama = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-  
-  // Data Jadwal per hari
-  const jadwalHarian = {
-    0: 'Libur',
-    1: '07.30 – 13.00 WIB',
-    2: '07.30 – 13.00 WIB',
-    3: '07.30 – 13.00 WIB',
-    4: '07.30 – 13.00 WIB',
-    5: '07.30 – 11.00 WIB',
-    6: '07.30 – 12.00 WIB'
-  };
+  const jadwalHarian = { 0:'Libur', 1:'07.30 – 13.00 WIB', 2:'07.30 – 13.00 WIB', 3:'07.30 – 13.00 WIB', 4:'07.30 – 13.00 WIB', 5:'07.30 – 11.00 WIB', 6:'07.30 – 12.00 WIB' };
 
   function pad(n){ return n.toString().padStart(2,'0'); }
 
   function updateClock(){
     const now = new Date();
-    const jam = pad(now.getHours());
-    const menit = pad(now.getMinutes());
-    const detik = pad(now.getSeconds());
-    const hariIndex = now.getDay();
+    document.getElementById('liveclock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    document.getElementById('livedate').textContent = `${hariNama[now.getDay()]}, ${now.getDate()} ${bulanNama[now.getMonth()]} ${now.getFullYear()}`;
 
-    document.getElementById('liveclock').textContent = `${jam}:${menit}:${detik}`;
-    document.getElementById('livedate').textContent = `${hariNama[hariIndex]}, ${now.getDate()} ${bulanNama[now.getMonth()]} ${now.getFullYear()}`;
-
-    // Menampilkan jadwal HANYA untuk hari ini ke dalam elemen HTML
-    document.getElementById('todaySchedule').textContent = jadwalHarian[hariIndex];
+    const elmTodaySchedule = document.getElementById('todaySchedule');
+    if (elmTodaySchedule) { elmTodaySchedule.textContent = jadwalHarian[now.getDay()]; }
 
     const totalMenit = now.getHours() * 60 + now.getMinutes();
-    
-    let buka = 7 * 60 + 30; // 07.30
-    let tutup = 0;
-    let isOpen = false;
+    let tutup = 0; let isOpen = false;
+    if (now.getDay() >= 1 && now.getDay() <= 4) tutup = 13 * 60;
+    else if (now.getDay() === 5) tutup = 11 * 60;
+    else if (now.getDay() === 6) tutup = 12 * 60;
 
-    // Cek jadwal tutup berdasarkan hari untuk indikator BUKA/TUTUP
-    if (hariIndex >= 1 && hariIndex <= 4) { // Senin - Kamis
-      tutup = 13 * 60; // 13.00
-    } else if (hariIndex === 5) { // Jumat
-      tutup = 11 * 60; // 11.00
-    } else if (hariIndex === 6) { // Sabtu
-      tutup = 12 * 60; // 12.00
-    }
-
-    // Tentukan apakah puskesmas Buka / Tutup saat ini
-    if (hariIndex !== 0 && totalMenit >= buka && totalMenit < tutup) {
-      isOpen = true;
-    }
+    if (now.getDay() !== 0 && totalMenit >= (7 * 60 + 30) && totalMenit < tutup) { isOpen = true; }
 
     const pill = document.getElementById('statusPill');
-
-    if (isOpen) {
-      pill.className = 'status-pill status-open';
-      pill.innerHTML = '<span class="dot"></span> Jam Pelayanan sedang BUKA · UGD tetap siaga 24 jam';
-    } else {
-      pill.className = 'status-pill status-closed';
-      pill.innerHTML = '<span class="dot"></span> Jam Pelayanan tutup saat ini · UGD tetap siaga 24 jam';
+    if (pill) {
+      if (isOpen) {
+        pill.className = 'status-pill status-open';
+        pill.innerHTML = '<span class="dot"></span> Jam Pelayanan BUKA · PONED siaga 24 jam';
+      } else {
+        pill.className = 'status-pill status-closed';
+        pill.innerHTML = '<span class="dot"></span> Jam Pelayanan TUTUP · PONED siaga 24 jam';
+      }
     }
   }
   
-  updateClock(); // Panggil sekali di awal agar tidak delay
-  setInterval(updateClock, 1000); // Update setiap detik
+  updateClock(); setInterval(updateClock, 1000); 
 
-  // ===== Loading screen =====
   window.addEventListener('load', function() {
     const loader = document.getElementById('loader');
-    
     if (!sessionStorage.getItem('sudahDimuat')) {
       setTimeout(function() {
-        if(loader) {
-          loader.classList.add('hide');
-        }
+        if(loader) { loader.classList.add('hide'); }
         document.body.classList.add('ready');
         sessionStorage.setItem('sudahDimuat', 'true');
       }, 800);
     }
   });
 
-  // ===== Scroll reveal =====
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -1065,74 +1148,40 @@ kemandirian masyarakat untuk berperilaku hidup bersih dan sehat"</p>
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // ===== LIGHTBOX GALERI KEGIATAN =====
+  // Lightbox Galeri
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
-  const closeLightbox = document.querySelector('.close-lightbox');
-  const galeriImages = document.querySelectorAll('.gitem img');
-
-  galeriImages.forEach(img => {
+  
+  document.querySelectorAll('.gitem img').forEach(img => {
     img.addEventListener('click', function() {
       lightboxImg.src = this.src;
       lightbox.classList.add('show');
     });
   });
 
-  closeLightbox.addEventListener('click', () => {
-    lightbox.classList.remove('show');
-  });
+  document.querySelector('.close-lightbox').addEventListener('click', () => { lightbox.classList.remove('show'); });
+  lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) { lightbox.classList.remove('show'); } });
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target !== lightboxImg) {
-      lightbox.classList.remove('show');
+  // Efek Aurora Mouse
+  if(window.innerWidth > 900) {
+    const aurora = document.createElement('div');
+    aurora.className = 'aurora-cursor';
+    document.body.appendChild(aurora);
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2, auroraX = mouseX, auroraY = mouseY;
+    function animateAurora() {
+      auroraX += (mouseX - auroraX) * 0.05; auroraY += (mouseY - auroraY) * 0.05;
+      aurora.style.transform = `translate(${auroraX - 175}px, ${auroraY - 175}px)`;
+      const el = document.elementFromPoint(mouseX, mouseY);
+      if (el && el.closest('.hero, .layanan, footer')) { aurora.classList.add('light-blend'); } 
+      else { aurora.classList.remove('light-blend'); }
+      requestAnimationFrame(animateAurora);
     }
-  });
+    animateAurora();
 
-  // ===== EFEK AURORA MOUSE =====
-  const aurora = document.createElement('div');
-  aurora.className = 'aurora-cursor';
-  document.body.appendChild(aurora);
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let auroraX = mouseX;
-  let auroraY = mouseY;
-
-  function animateAurora() {
-    auroraX += (mouseX - auroraX) * 0.05;
-    auroraY += (mouseY - auroraY) * 0.05;
-
-    aurora.style.transform = `translate(${auroraX - 175}px, ${auroraY - 175}px)`;
-
-    const elementUnderCursor = document.elementFromPoint(mouseX, mouseY);
-    if (elementUnderCursor && elementUnderCursor.closest('.hero, .layanan, footer')) {
-      aurora.classList.add('light-blend'); 
-    } else {
-      aurora.classList.remove('light-blend'); 
-    }
-
-    requestAnimationFrame(animateAurora);
+    window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; aurora.style.opacity = '1'; });
+    document.addEventListener('mouseleave', () => { aurora.style.opacity = '0'; });
   }
-  animateAurora();
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    aurora.style.opacity = '1';
-  });
-
-  window.addEventListener('touchmove', (e) => {
-    mouseX = e.touches[0].clientX;
-    mouseY = e.touches[0].clientY;
-    aurora.style.opacity = '1';
-  }, { passive: true }); 
-
-  document.addEventListener('mouseleave', () => {
-    aurora.style.opacity = '0';
-  });
-  document.addEventListener('touchend', () => {
-    aurora.style.opacity = '0';
-  });
 </script>
 
 </body>
