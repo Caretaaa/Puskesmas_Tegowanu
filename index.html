@@ -23,14 +23,22 @@
     --radius:14px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{}
+  
   body{
     font-family:'Public Sans', sans-serif;
     color:var(--ink);
     background:var(--cream);
     line-height:1.6;
+    /* Mencegah scroll saat loading */
+    overflow: hidden; 
+  }
+  
+  /* Mengembalikan scroll saat loading selesai */
+  body.ready { 
+    overflow-y: auto; 
     overflow-x: hidden; 
   }
+
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
   h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:600; line-height:1.15; color:var(--teal-900);}
@@ -287,15 +295,92 @@
   .aurora-cursor { position: fixed; top: 0; left: 0; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(29, 133, 113, 0.35) 0%, rgba(143, 214, 191, 0.15) 45%, transparent 70%); filter: blur(40px); pointer-events: none; z-index: 45; opacity: 0; transition: opacity 0.4s ease; will-change: transform; mix-blend-mode: multiply; }
   .aurora-cursor.light-blend { mix-blend-mode: screen; background: radial-gradient(circle, rgba(143, 214, 191, 0.25) 0%, rgba(227, 150, 62, 0.1) 45%, transparent 70%); }
 
-  /* ===== LOADER ===== */
-  #loader{ position:fixed; inset:0; z-index:999; background:var(--teal-900); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; transition:opacity .6s ease, visibility .6s ease; }
-  #loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
-  #loader .loader-img { width: 240px; max-width: 80%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); animation: pulseImg 1.5s ease-in-out infinite; }
-  @keyframes pulseImg { 0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); } 50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); } }
-  #loader .ltext{font-family:'JetBrains Mono',monospace; font-size:0.78rem; letter-spacing:.12em; text-transform:uppercase; color:#8FD6BF;}
-  #loader .lbar{width:160px; height:3px; border-radius:99px; background:rgba(255,255,255,.14); overflow:hidden;}
-  #loader .lbar span{display:block; height:100%; width:40%; background:var(--amber-500); border-radius:99px; animation:lbarMove 1.1s ease-in-out infinite;}
-  @keyframes lbarMove{ 0%{ transform:translateX(-100%); } 100%{ transform:translateX(350%); } }
+  /* ===== LOADER (UPDATED) ===== */
+  #loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    /* Menggunakan gambar sampul sebagai background dengan efek gelap (overlay) */
+    background: linear-gradient(rgba(14, 59, 51, 0.85), rgba(10, 43, 37, 0.95)), url('img/sampul.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Animasi ditarik ke atas saat selesai */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+  }
+
+  /* Saat class hide ditambahkan, loader naik ke atas */
+  #loader.hide {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .loader-title {
+    color: var(--white);
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    animation: popUpLoader 1s ease-out forwards;
+  }
+
+  @keyframes popUpLoader {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  #loader .ltext {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber-500);
+  }
+
+  #loader .lbar {
+    width: 200px;
+    height: 4px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    position: relative;
+  }
+
+  #loader .lbar span {
+    display: block;
+    height: 100%;
+    width: 40%;
+    background: var(--amber-500);
+    border-radius: 99px;
+    position: absolute;
+    animation: lbarMove 1.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  @keyframes lbarMove {
+    0% { left: -40%; }
+    100% { left: 100%; }
+  }
+
+  /* ===== ANIMASI MASUK HALAMAN (CINEMATIC REVEAL) ===== */
+  /* Efek halaman membesar perlahan dari belakang loader */
+  .view-section {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
+  }
+  body.ready .view-section {
+    transform: scale(1);
+    opacity: 1;
+  }
 
   .pop-in{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
   body.ready .pop-in{ opacity:1; transform:translateY(0); }
@@ -331,9 +416,11 @@
 <body>
 
 <div id="loader">
-  <img src="img/sampul.png" alt="Puskesmas Tegowanu" class="loader-img" onerror="this.src='https://placehold.co/240x240?text=Puskesmas'">
-  <div class="ltext">Memuat halaman…</div>
-  <div class="lbar"><span></span></div>
+  <div class="loader-content">
+    <h2 class="loader-title">Puskesmas Tegowanu</h2>
+    <div class="ltext">Memuat halaman…</div>
+    <div class="lbar"><span></span></div>
+  </div>
 </div>
 
 <script>
@@ -1171,7 +1258,7 @@
         if(loader) { loader.classList.add('hide'); }
         document.body.classList.add('ready');
         sessionStorage.setItem('sudahDimuat', 'true');
-      }, 800);
+      }, 1500); // Waktu 1.5 detik agar animasi loader full-screen terlihat
     }
   });
 
