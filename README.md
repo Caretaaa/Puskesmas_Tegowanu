@@ -1,2 +1,2 @@
-# Puskesmas-Gubug-1
-Website resmi Puskesmas Gubug 1
+# Puskesmas Tegowanu
+Website resmi Puskesmas Tegowanu
