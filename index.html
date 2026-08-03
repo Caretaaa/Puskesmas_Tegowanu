@@ -688,7 +688,7 @@
 <div id="article-view" class="page-view view-section">
   <div class="wrap">
     <div class="page-container">
-      <a onclick="openView('main-view', 'berita')" class="page-back">← Kembali ke Berita</a>
+      <a onclick="history.back()" class="page-back">← Kembali ke Berita</a>
       <span class="article-date" id="art-date" style="color:var(--amber-500); font-family:monospace; font-weight:700; margin-bottom:12px; display:block;"></span>
       <h1 class="page-title" id="art-title"></h1>
       <img src="" alt="Gambar Berita" class="article-hero-img" id="art-img" style="width:100%; border-radius:12px; margin: 30px 0;">
@@ -703,7 +703,7 @@
 <div id="tarif-view" class="page-view view-section">
   <div class="wrap">
     <div class="page-container">
-      <a onclick="openView('main-view')" class="page-back">← Kembali ke Beranda</a>
+      <a onclick="history.back()" class="page-back">← Kembali ke Beranda</a>
       <h1 class="page-title">Tarif Layanan Puskesmas</h1>
       <p class="page-desc">Daftar tarif retribusi pelayanan kesehatan di UPTD Puskesmas Tegowanu sesuai dengan standar peraturan yang berlaku.</p>
       
@@ -799,7 +799,7 @@
 <div id="standar-layanan-view" class="page-view view-section">
   <div class="wrap">
     <div class="page-container">
-      <a onclick="openView('main-view')" class="page-back">← Kembali ke Beranda</a>
+      <a onclick="history.back()" class="page-back">← Kembali ke Beranda</a>
       <h1 class="page-title">Standar Pelayanan Minimal</h1>
       <p class="page-desc">Berikut adalah rincian jenis layanan, persyaratan, dan estimasi waktu penyelesaian di lingkungan UPTD Puskesmas Tegowanu.</p>
       
@@ -895,7 +895,7 @@
 <div id="survey-view" class="page-view view-section">
   <div class="wrap">
     <div class="page-container" style="text-align: center;">
-      <a onclick="openView('main-view')" class="page-back" style="float: left;">← Kembali ke Beranda</a>
+      <a onclick="history.back()" class="page-back" style="float: left;">← Kembali ke Beranda</a>
       <div style="clear: both;"></div>
       
       <h1 class="page-title">Survey Kepuasan Masyarakat</h1>
@@ -969,12 +969,17 @@
 <script>
   let scrollAnimationId = null;
 
-  // Manajemen Tampilan SPA
-  function openView(viewId, scrollToSectionId = null, resetScroll = true) {
+  // Manajemen Tampilan SPA dengan Dukungan History Browser / Tombol Back HP
+  function openView(viewId, scrollToSectionId = null, resetScroll = true, pushHistory = true) {
     const views = document.querySelectorAll('.view-section');
     views.forEach(v => v.style.display = 'none');
     document.getElementById(viewId).style.display = 'block';
     document.getElementById('navLinks').classList.remove('open');
+    
+    // Mendaftarkan perpindahan tampilan ke riwayat browser
+    if (pushHistory) {
+      history.pushState({ viewId: viewId, scrollToSectionId: scrollToSectionId }, "", "");
+    }
     
     if(scrollToSectionId) {
       setTimeout(() => {
@@ -986,6 +991,15 @@
       window.scrollTo(0, 0);
     }
   }
+
+  // Pendeteksi saat tombol 'Back' HP / Browser ditekan
+  window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.viewId) {
+      openView(event.state.viewId, event.state.scrollToSectionId, true, false);
+    } else {
+      openView('main-view', null, true, false);
+    }
+  });
 
   function lihatHasilSurvey() {
     let pass = prompt("Masukkan Kata Sandi Petugas:");
@@ -1044,9 +1058,7 @@
         e.preventDefault();
         
         if(document.getElementById('main-view').style.display !== 'block') {
-           const views = document.querySelectorAll('.view-section');
-           views.forEach(v => v.style.display = 'none');
-           document.getElementById('main-view').style.display = 'block';
+           openView('main-view', null, false, true);
         }
         
         document.getElementById('navLinks').classList.remove('open');
@@ -1155,10 +1167,10 @@
   const hariNama = ['Minggu','Senin','Selasa','Rabu','Kamis',"Jum'at",'Sabtu'];
   const bulanNama = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
   
-  // Jadwal Pelayanan (sudah ada)
+  // Jadwal Pelayanan
   const jadwalPelayananHarian = { 0:'Libur', 1:'07.30 – 14.15 WIB', 2:'07.30 – 14.15 WIB', 3:'07.30 – 14.15 WIB', 4:'07.30 – 14.15 WIB', 5:'07.30 – 11.15 WIB', 6:'07.30 – 12.45 WIB' };
   
-  // Jadwal Pendaftaran (Baru)
+  // Jadwal Pendaftaran
   const jadwalPendaftaranHarian = { 0:'Libur', 1:'07.30 – 13.00 WIB', 2:'07.30 – 13.00 WIB', 3:'07.30 – 13.00 WIB', 4:'07.30 – 13.00 WIB', 5:'07.30 – 11.00 WIB', 6:'07.30 – 12.00 WIB' };
 
   function pad(n){ return n.toString().padStart(2,'0'); }
@@ -1198,9 +1210,10 @@
   
   updateClock(); setInterval(updateClock, 1000); 
 
-  // Menjalankan animasi pop-in setelah seluruh halaman dimuat
+  // Menjalankan animasi pop-in & mendaftarkan halaman awal ke history
   window.addEventListener('load', function() {
     document.body.classList.add('ready');
+    history.replaceState({ viewId: 'main-view', scrollToSectionId: null }, "", "");
   });
 
   const revealEls = document.querySelectorAll('.reveal');
