@@ -1,0 +1,51 @@
+---
+interface Props {
+  class?: string;
+  initial?: 'id' | 'en';
+  size?: 'sm' | 'md';
+}
+
+const { class: className = '', initial = 'id', size = 'sm' } = Astro.props;
+const sizeCls = size === 'sm' ? 'px-2 py-1 text-[0.72rem]' : 'px-3 py-1.5 text-xs';
+const langs = [
+  { code: 'id', label: 'ID' },
+  { code: 'en', label: 'EN' },
+] as const;
+---
+
+<div
+  class:list={['inline-flex items-center rounded-full border border-teal-700/30 bg-white/60', className]}
+  role="group"
+  aria-label="Pilih bahasa / Choose language"
+>
+  {
+    langs.map((l) => (
+      <button
+        type="button"
+        data-lang-toggle
+        data-lang={l.code}
+        aria-pressed={l.code === initial}
+        class:list={[
+          'lang-pill rounded-full font-mono font-bold tracking-wide transition-colors',
+          sizeCls,
+          l.code === initial ? 'is-active' : '',
+        ]}
+      >
+        {l.label}
+      </button>
+    ))
+  }
+</div>
+
+<style>
+  .lang-pill {
+    color: var(--color-teal-800);
+  }
+  .lang-pill:hover {
+    color: var(--color-teal-950);
+  }
+  .lang-pill.is-active {
+    background: var(--color-teal-900);
+    color: #fff;
+  }
+</style>

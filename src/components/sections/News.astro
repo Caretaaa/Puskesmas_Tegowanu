@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('berita')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const fmtDate = (d: Date) =>
+  new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+---
+
+<section id="berita" data-spy="berita" class="reveal bg-teal-50/50 section-pad">
+  <div class="wrap">
+    <div class="sec-head text-center">
+      <span class="eyebrow" data-i18n="news.eyebrow">Informasi Terkini</span>
+      <h2 class="mx-auto mt-3 max-w-2xl font-display text-section font-bold text-teal-950" data-i18n="news.title">
+        Berita & Kegiatan Puskesmas
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-ink-soft" data-i18n="news.desc">
+        Ikuti perkembangan informasi terbaru seputar kesehatan, jadwal kegiatan, dan pengumuman penting.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        posts.map((post) => (
+          <a
+            href={`/berita/${post.slug}`}
+            class="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+          >
+            <div class="overflow-hidden">
+              <img
+                src={post.data.image}
+                alt=""
+                width="400"
+                height="260"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <span class="font-mono text-xs font-bold uppercase tracking-wider text-amber-600">{fmtDate(post.data.date)}</span>
+              <h3 class="mt-2 font-display text-xl font-semibold leading-snug text-teal-950 transition-colors group-hover:text-teal-700">
+                {post.data.title}
+              </h3>
+              <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-ink-soft">{post.data.excerpt}</p>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-teal-700">
+                <span data-i18n="news.readMore">Baca Selengkapnya →</span>
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

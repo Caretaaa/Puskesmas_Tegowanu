@@ -1,0 +1,81 @@
+---
+import { SITE, waLink } from '@/lib/site';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<section id="kontak" data-spy="kontak" class="reveal section-pad">
+  <div class="wrap">
+    <div class="sec-head text-center">
+      <span class="eyebrow" data-i18n="contact.eyebrow">Kontak</span>
+      <h2 class="mx-auto mt-3 max-w-2xl font-display text-section font-bold text-teal-950" data-i18n="contact.title">
+        Lokasi & Informasi Kontak
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+      <div class="flex flex-col rounded-3xl border border-line bg-white p-7 shadow-card sm:p-9">
+        <h3 class="font-display text-xl font-semibold text-teal-950">{SITE.name}</h3>
+
+        <div class="mt-6 space-y-5">
+          <div class="flex gap-4">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-teal-900 text-mint"><Icon name="map-pin" size={20} /></span>
+            <div>
+              <strong class="block text-sm font-semibold text-teal-950" data-i18n="contact.addressLabel">Alamat</strong>
+              <span class="mt-0.5 block text-[0.95rem] leading-relaxed text-ink-soft">
+                {SITE.address.street}, {SITE.address.village} ({SITE.address.postalCode}), {SITE.address.regency}
+              </span>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-teal-900 text-mint"><Icon name="phone" size={20} /></span>
+            <div>
+              <strong class="block text-sm font-semibold text-teal-950" data-i18n="contact.phoneLabel">Telepon</strong>
+              <span class="mt-0.5 block text-[0.95rem] leading-relaxed text-ink-soft">{SITE.phone}<br />{SITE.phoneMobile}</span>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-teal-900 text-mint"><Icon name="mail" size={20} /></span>
+            <div>
+              <strong class="block text-sm font-semibold text-teal-950" data-i18n="contact.emailLabel">Email</strong>
+              <a href={`mailto:${SITE.email}`} class="mt-0.5 block text-[0.95rem] text-ink-soft underline-offset-4 hover:underline">{SITE.email}</a>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-teal-900 text-mint"><Icon name="clock" size={20} /></span>
+            <div>
+              <strong class="block text-sm font-semibold text-teal-950" data-i18n="contact.hoursLabel">Jam Pelayanan</strong>
+              <span class="mt-0.5 block max-w-md text-[0.95rem] leading-relaxed text-ink-soft" data-i18n="contact.hoursValue">
+                PONED 24 Jam · Senin–Kamis 07.30–14.15, Jumat 07.30–11.15, Sabtu 07.30–12.45, Minggu Libur
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href={waLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-mint px-6 py-3 font-semibold text-teal-950 transition-colors hover:bg-mint-deep hover:text-white"
+        >
+          <Icon name="whatsapp" size={18} />
+          WhatsApp
+        </a>
+      </div>
+
+      <div class="relative min-h-[320px] overflow-hidden rounded-3xl border border-line shadow-card lg:min-h-full">
+        <iframe
+          src={SITE.mapEmbed}
+          title={SITE.name}
+          class="absolute inset-0 h-full w-full"
+          style="border:0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>

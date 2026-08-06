@@ -1,0 +1,24 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { idText } from '@/lib/i18n-dicts';
+---
+
+<Layout title="404 — Halaman tidak ditemukan" path="/404" noindex>
+  <section class="section-pad">
+    <div class="wrap flex min-h-[60vh] flex-col items-center justify-center text-center">
+      <p class="font-mono text-6xl font-bold tracking-tight text-mint-deep sm:text-8xl">404</p>
+      <h1 class="mt-4 font-display text-3xl font-semibold text-teal-950 sm:text-4xl" data-i18n="pages.notFoundTitle">
+        {idText('pages.notFoundTitle')}
+      </h1>
+      <p class="mt-4 max-w-md text-ink-soft" data-i18n="pages.notFoundDesc">
+        {idText('pages.notFoundDesc')}
+      </p>
+      <a
+        href="/"
+        class="mt-8 inline-flex items-center gap-2 rounded-full bg-teal-900 px-7 py-3.5 font-semibold text-white shadow-card transition-colors hover:bg-teal-800"
+      >
+        <span data-i18n="pages.notFoundCta">{idText('pages.notFoundCta')}</span>
+      </a>
+    </div>
+  </section>
+</Layout>

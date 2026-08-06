@@ -1,0 +1,57 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import DataTable from '@/components/ui/DataTable.astro';
+import { TARIF, TARIF_TOTAL_ROWS } from '@/lib/data/tarif';
+import { breadcrumbJsonLd } from '@/lib/seo';
+import { idText } from '@/lib/i18n-dicts';
+
+const cols = [
+  { key: 'no', i18n: 'tarif.no', className: 'w-16 text-center' },
+  { key: 'name', i18n: 'tarif.service', className: 'w-2/3' },
+  { key: 'fee', i18n: 'tarif.fee', className: 'whitespace-nowrap' },
+];
+---
+
+<Layout
+  title="Tarif Layanan"
+  path="/tarif"
+  navActive="layanan"
+  jsonLd={breadcrumbJsonLd('/tarif', 'Tarif Layanan')}
+>
+  <PageHero title={idText('pages.tarifTitle')} titleI18n="pages.tarifTitle" descI18n="pages.tarifDesc" />
+
+  <section class="section-pad">
+    <div class="wrap">
+      <p class="mb-10 font-mono text-sm text-ink-soft">
+        {TARIF.length} klaster tarif · {TARIF_TOTAL_ROWS} jenis layanan
+      </p>
+      <div class="space-y-12">
+        {
+          TARIF.map((table, i) => (
+            <div>
+              <div class="mb-4 flex items-center gap-3">
+                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-900 font-mono text-xs font-bold text-mint">
+                  {i + 1}
+                </span>
+                <h2 class="font-display text-xl font-semibold text-teal-950 sm:text-2xl">
+                  {table.title}
+                </h2>
+              </div>
+              <DataTable
+                cols={cols}
+                data={table.rows as unknown as ReadonlyArray<Record<string, unknown>>}
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <aside class="mt-12 rounded-3xl border border-line bg-teal-50/60 p-6">
+        <p class="text-sm leading-relaxed text-ink-soft">
+          <strong class="font-semibold text-teal-900">Catatan:</strong> Tarif berlaku sesuai dengan peraturan daerah tentang retribusi pelayanan kesehatan. Pasien dengan JKN/KIS yang aktif dapat memperoleh pelayanan sesuai ketentuan program. Hubungi petugas pendaftaran untuk informasi lebih lanjut.
+        </p>
+      </aside>
+    </div>
+  </section>
+</Layout>

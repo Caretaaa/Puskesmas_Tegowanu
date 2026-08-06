@@ -1,0 +1,36 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import SurveyGate from '@/components/sections/SurveyGate';
+import { SITE } from '@/lib/site';
+import { breadcrumbJsonLd } from '@/lib/seo';
+import { idText } from '@/lib/i18n-dicts';
+---
+
+<Layout
+  title="Survey Kepuasan Masyarakat"
+  path="/survey-kepuasan"
+  navActive="survey"
+  jsonLd={breadcrumbJsonLd('/survey-kepuasan', 'Survey Kepuasan')}
+>
+  <PageHero title={idText('pages.surveyTitle')} titleI18n="pages.surveyTitle" descI18n="pages.surveyDesc" />
+
+  <section class="section-pad">
+    <div class="wrap max-w-4xl">
+      <div class="overflow-hidden rounded-3xl border border-line shadow-card">
+        <iframe
+          src={SITE.surveyFormEmbed}
+          title="Formulir Survey Kepuasan Masyarakat"
+          width="100%"
+          height="800"
+          loading="lazy"
+          class="block min-h-[640px] w-full border-0 bg-white"
+        >
+          Memuat formulir survey…
+        </iframe>
+      </div>
+
+      <SurveyGate client:load />
+    </div>
+  </section>
+</Layout>

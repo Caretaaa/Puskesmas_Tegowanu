@@ -1,0 +1,77 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import DataTable from '@/components/ui/DataTable.astro';
+import { STANDAR, STANDAR_TOTAL_ROWS } from '@/lib/data/standar';
+import { breadcrumbJsonLd } from '@/lib/seo';
+import { idText } from '@/lib/i18n-dicts';
+
+const cols = [
+  { key: 'no', i18n: 'standar.no', className: 'w-16 text-center' },
+  { key: 'name', i18n: 'standar.service', className: 'w-[26%]' },
+  { key: 'requirements', i18n: 'standar.requirements' },
+  { key: 'time', i18n: 'standar.time', className: 'whitespace-nowrap' },
+];
+---
+
+<Layout
+  title="Standar Pelayanan Minimal"
+  path="/standar-layanan"
+  navActive="layanan"
+  jsonLd={breadcrumbJsonLd('/standar-layanan', 'Standar Layanan')}
+>
+  <PageHero title={idText('pages.standardTitle')} titleI18n="pages.standardTitle" descI18n="pages.standardDesc" />
+
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p class="font-mono text-sm text-ink-soft">
+          {STANDAR.length} kelompok layanan · {STANDAR_TOTAL_ROWS} jenis pelayanan
+        </p>
+        <label class="relative block w-full max-w-sm">
+          <span class="sr-only">Cari layanan</span>
+          <svg
+            viewBox="0 0 24 24"
+            class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-soft"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input
+            type="search"
+            data-table-filter
+            placeholder="Cari layanan, persyaratan, atau waktu…"
+            class="w-full rounded-full border border-line bg-white py-2.5 pl-11 pr-4 text-sm text-ink outline-none transition-shadow placeholder:text-ink-soft/70 focus:shadow-lift"
+          />
+        </label>
+      </div>
+
+      <div class="space-y-12">
+        {
+          STANDAR.map((table) => (
+            <div>
+              <h2 class="mb-4 font-display text-xl font-semibold text-teal-950 sm:text-2xl">
+                {table.num}. {table.title}
+              </h2>
+              <DataTable
+                cols={cols}
+                data={table.rows as unknown as ReadonlyArray<Record<string, unknown>>}
+                filterable
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <p id="no-results" data-filter-empty class="hidden py-10 text-center text-ink-soft">
+        Tidak ada layanan yang cocok dengan pencarian Anda.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<script src="../scripts/table-filter.ts"></script>

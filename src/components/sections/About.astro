@@ -1,0 +1,20 @@
+---
+import AboutTabs from '@/components/sections/AboutTabs';
+---
+
+<section id="tentang-kami" data-spy="tentang" class="reveal section-pad">
+  <span id="profil" class="scroll-mt-28"></span>
+  <div class="wrap">
+    <div class="sec-head text-center">
+      <span class="eyebrow" data-i18n="about.eyebrow">Tentang Kami</span>
+      <h2 class="mx-auto mt-3 max-w-2xl font-display text-section font-bold text-teal-950" data-i18n="about.title">
+        Informasi & Layanan Puskesmas
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-ink-soft" data-i18n="about.desc">
+        Pilih tombol di bawah untuk melihat profil utama atau mengajukan layanan pengaduan.
+      </p>
+    </div>
+    <span id="pengaduan" class="scroll-mt-28"></span>
+    <AboutTabs client:idle />
+  </div>
+</section>

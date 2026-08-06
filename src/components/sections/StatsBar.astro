@@ -1,0 +1,25 @@
+---
+import { STATS } from '@/lib/data/site-content';
+import { idText } from '@/lib/i18n-dicts';
+import { cn } from '@/lib/ui';
+---
+
+<section class="relative bg-teal-950 text-white" aria-label="Statistik">
+  <div aria-hidden class="absolute inset-0 bg-[radial-gradient(60%_120%_at_50%_0%,rgba(143,214,191,0.16),transparent)]"></div>
+  <div class="wrap relative grid grid-cols-2 gap-y-10 py-10 sm:py-12 lg:grid-cols-4">
+    {
+      STATS.map((s, i) => (
+        <div class={cn('text-center', i > 0 && 'lg:border-l lg:border-teal-800/60')}>
+          <div class="font-display text-4xl font-semibold tabular-nums text-mint sm:text-5xl">
+            {/^\d+$/.test(s.value)
+              ? <span data-count={s.value}>{s.value}</span>
+              : <span>{s.value}</span>}
+          </div>
+          <div class="mt-2 text-sm font-medium text-teal-200/90" data-i18n={s.key}>
+            {idText(s.key)}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,54 @@
+---
+import { idText } from '@/lib/i18n-dicts';
+
+interface Column {
+  key: string;
+  /** i18n key used both for the header text and the mobile `data-label`. */
+  i18n?: string;
+  /** Static header text when no i18n key applies. */
+  label?: string;
+  className?: string;
+}
+
+interface Props {
+  cols: Column[];
+  data: ReadonlyArray<Record<string, unknown>>;
+  /** Opt rows into the progressive `[data-table-filter]` script. */
+  filterable?: boolean;
+}
+
+const { cols, data, filterable = false } = Astro.props;
+---
+
+<div class="table-scroll">
+  <table class="data-table">
+    <thead>
+      <tr>
+        {
+          cols.map((col) => (
+            <th class:list={['sticky', col.className]}>
+              {col.i18n
+                ? <span data-i18n={col.i18n}>{idText(col.i18n)}</span>
+                : col.label}
+            </th>
+          ))
+        }
+      </tr>
+    </thead>
+    <tbody>
+      {
+        data.map((row) => (
+          <tr data-filter-row={filterable ? '' : undefined}>
+            {
+              cols.map((col) => (
+                <td data-label={col.i18n ? idText(col.i18n) : col.label} class:list={[col.className]}>
+                  {row[col.key] as string}
+                </td>
+              ))
+            }
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

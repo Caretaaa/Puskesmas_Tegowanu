@@ -1,0 +1,70 @@
+---
+import { waLink } from '@/lib/site';
+import { getWibParts } from '@/lib/schedule';
+import Icon from '@/components/ui/Icon.astro';
+import StatusBoard from '@/components/hero/StatusBoard';
+import HeroCanvas from '@/components/hero/HeroCanvas';
+
+const initialParts = getWibParts();
+---
+
+<section id="beranda" data-spy="beranda" class="relative overflow-hidden">
+  <div aria-hidden class="absolute inset-0 bg-gradient-to-br from-paper via-white to-mint/15"></div>
+  <div aria-hidden class="absolute -left-40 top-24 hidden h-[26rem] w-[26rem] rounded-full bg-mint/20 blur-3xl lg:block" data-parallax data-parallax-speed="0.5"></div>
+
+  <div class="absolute inset-0" data-parallax data-parallax-speed="0.15">
+    <HeroCanvas client:idle />
+  </div>
+
+  <div aria-hidden class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block" data-parallax data-parallax-speed="0.35">
+    <img
+      src="/img/sampul.webp"
+      alt=""
+      width="900"
+      height="600"
+      loading="eager"
+      decoding="async"
+      class="h-full w-full scale-[1.22] object-cover opacity-90 [mask-image:linear-gradient(90deg,transparent,black_55%)]"
+    />
+  </div>
+
+  <div class="relative wrap grid items-center gap-12 section-pad lg:grid-cols-[1.05fr_0.95fr] lg:pt-24 lg:pb-20">
+    <div class="hero-anim">
+      <p class="eyebrow flex items-center gap-2 text-mint-deep" data-i18n="hero.eyebrow">
+        Selamat datang di web resmi
+      </p>
+      <h1 class="hero-anim mt-4 font-display text-hero font-bold text-gradient" data-i18n="hero.title" data-i18n-html>
+        UPTD Puskesmas<br />Tegowanu
+      </h1>
+      <p class="hero-anim mt-5 max-w-xl text-lg leading-relaxed text-ink-soft" data-i18n="hero.lead">
+        Fasilitas Pelayanan Kesehatan Tingkat Pertama di Jln. Gatot Subroto No. 128, mengutamakan layanan berkualitas demi masyarakat Tegowanu sehat.
+      </p>
+
+      <blockquote class="hero-motto hero-anim mt-6 inline-flex items-center gap-2 rounded-full border border-mint/60 bg-white/70 px-5 py-2.5 font-display text-lg text-teal-800 backdrop-blur">
+        <span data-i18n="hero.motto">❝ Melayani Dengan Sepenuh Hati ❞</span>
+      </blockquote>
+
+      <div class="hero-anim mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href={waLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full bg-teal-900 px-7 py-3.5 text-base font-semibold text-white shadow-card transition-all hover:bg-teal-800 hover:shadow-lift"
+        >
+          <Icon name="whatsapp" size={18} />
+          <span data-i18n="hero.ctaContact">Hubungi Kami</span>
+        </a>
+        <a
+          href="/#layanan"
+          class="inline-flex items-center gap-2 rounded-full border-2 border-teal-800/70 px-7 py-3.5 text-base font-semibold text-teal-900 transition-colors hover:bg-teal-900 hover:text-white"
+        >
+          <span data-i18n="hero.ctaServices">Lihat Layanan</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-anim">
+      <StatusBoard client:load initial={initialParts} />
+    </div>
+  </div>
+</section>

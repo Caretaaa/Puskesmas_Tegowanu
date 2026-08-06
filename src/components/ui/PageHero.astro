@@ -1,0 +1,41 @@
+---
+import { idText } from '@/lib/i18n-dicts';
+
+interface Props {
+  title: string;
+  desc?: string;
+  /** i18n keys for title/desc (swappable on language toggle). */
+  titleI18n?: string;
+  descI18n?: string;
+}
+
+const { title, desc, titleI18n, descI18n } = Astro.props;
+---
+
+<section class="border-b border-line bg-gradient-to-b from-mint/10 to-paper">
+  <div class="wrap py-12 sm:py-14">
+    <nav aria-label="Breadcrumb" class="mb-4">
+      <ol class="flex items-center gap-2 font-mono text-xs text-ink-soft">
+        <li>
+          <a href="/" class="transition-colors hover:text-teal-700">
+            <span data-i18n="pages.breadcrumbHome">{idText('pages.breadcrumbHome')}</span>
+          </a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="font-semibold text-teal-800">{title}</li>
+      </ol>
+    </nav>
+    <h1
+      class="max-w-3xl font-display text-3xl font-semibold text-teal-950 sm:text-4xl"
+      data-i18n={titleI18n}
+      set:html={titleI18n ? idText(titleI18n) : title}
+    ></h1>
+    {
+      desc && (
+        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft" data-i18n={descI18n}>
+          {descI18n ? idText(descI18n) : desc}
+        </p>
+      )
+    }
+  </div>
+</section>

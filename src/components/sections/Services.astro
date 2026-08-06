@@ -1,0 +1,68 @@
+---
+import { KLASTER } from '@/lib/data/site-content';
+import { idText } from '@/lib/i18n-dicts';
+import ScrollyTelling from '@/components/scrolly/ScrollyTelling';
+
+const klasterChips = [
+  'bg-mint/20 text-teal-800',
+  'bg-amber-400/20 text-amber-700',
+  'bg-teal-400/20 text-teal-800',
+  'bg-teal-600/20 text-teal-800',
+  'bg-amber-500/20 text-amber-700',
+];
+const klasterAccents = ['border-mint', 'border-amber-400', 'border-teal-400', 'border-teal-600', 'border-amber-500'];
+---
+
+<section id="layanan" data-spy="layanan" class="relative overflow-hidden bg-ink text-white">
+  <div aria-hidden class="absolute inset-0 bg-[radial-gradient(70%_100%_at_80%_10%,rgba(143,214,191,0.14),transparent),radial-gradient(50%_80%_at_10%_90%,rgba(45,212,191,0.10),transparent)]"></div>
+  <div class="wrap relative section-pad">
+    <div class="sec-head text-center reveal">
+      <span class="eyebrow !text-mint" data-i18n="services.eyebrow">Program Puskesmas</span>
+      <h2 class="mx-auto mt-3 max-w-2xl font-display text-section font-bold text-white" data-i18n="services.title">
+        Layanan Kami
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-teal-100/70" data-i18n="services.desc">
+        Dua upaya utama yang kami jalankan, didukung lima klaster pelayanan sesuai siklus hidup masyarakat.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2 reveal">
+      <div class="flex items-start gap-5 rounded-3xl border border-teal-700/50 bg-white/5 p-6 backdrop-blur sm:p-7">
+        <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-mint font-display text-2xl font-bold text-teal-950">P</span>
+        <div>
+          <h4 class="font-display text-xl font-semibold text-white" data-i18n="services.ukp">Upaya Kesehatan Perorangan (UKP)</h4>
+          <p class="mt-2 leading-relaxed text-teal-100/70" data-i18n="services.ukpDesc">Pelayanan untuk peningkatan, pencegahan, penyembuhan penyakit, serta pemulihan kesehatan perseorangan di tingkat primer.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-5 rounded-3xl border border-teal-700/50 bg-white/5 p-6 backdrop-blur sm:p-7">
+        <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-400 font-display text-2xl font-bold text-teal-950">M</span>
+        <div>
+          <h4 class="font-display text-xl font-semibold text-white" data-i18n="services.ukm">Upaya Kesehatan Masyarakat (UKM)</h4>
+          <p class="mt-2 leading-relaxed text-teal-100/70" data-i18n="services.ukmDesc">Pemberdayaan masyarakat untuk mencegah penyakit dan meningkatkan derajat kesehatan secara menyeluruh.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klaster cards: stacked fallback for mobile / no-JS / reduced-motion -->
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:hidden reveal">
+      {
+        KLASTER.map((k, i) => (
+          <div class={klasterAccents[i % klasterAccents.length] + ' group rounded-3xl border-t-4 bg-white/5 p-5 backdrop-blur transition-colors hover:bg-white/10'}>
+            <span class={'inline-flex rounded-full px-3 py-1 font-mono text-[0.7rem] font-bold tracking-wider ' + klasterChips[i % klasterChips.length]}>
+              {k.num === 'Lintas' ? `Lintas Klaster` : `Klaster ${k.num}`}
+            </span>
+            <h4 class="mt-4 font-display text-lg font-semibold text-white" data-i18n={`services.${k.key}`}>
+              {idText(`services.${k.key}`)}
+            </h4>
+            <p class="mt-2 text-sm leading-relaxed text-teal-100/60" data-i18n={`services.${k.key}Desc`}>
+              {idText(`services.${k.key}Desc`)}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Desktop scrollytelling narrative (JS-gated pin; CSS fallback stacks panels) -->
+    <ScrollyTelling client:idle />
+  </div>
+</section>

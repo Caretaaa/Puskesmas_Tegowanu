@@ -1,0 +1,113 @@
+---
+import { SITE, waLink } from '@/lib/site';
+import { idText } from '@/lib/i18n-dicts';
+import Icon from '@/components/ui/Icon.astro';
+import LangSwitch from '@/components/LangSwitch.astro';
+
+const nav = [
+  { href: '/', key: 'footer.home' },
+  { href: '/tarif', key: 'footer.fees' },
+  { href: '/standar-layanan', key: 'footer.standards' },
+  { href: '/survey-kepuasan', key: 'footer.survey' },
+];
+
+const publicLinks = [
+  { href: '/#pengaduan', key: 'footer.complaint' },
+  { href: '/#layanan', key: 'footer.programs' },
+  { href: '/#kontak', key: 'footer.help' },
+];
+
+const socials = [
+  { href: SITE.social.instagram, key: 'Instagram', icon: 'instagram' as const },
+  { href: SITE.social.facebook, key: 'Facebook', icon: 'facebook' as const },
+  { href: SITE.social.tiktok, key: 'TikTok', icon: 'tiktok' as const },
+];
+---
+
+<footer class="no-print border-t border-line bg-teal-950 text-teal-100/90">
+  <div class="wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="flex items-center gap-3">
+        <img src="/img/logobawah.webp" alt={`Logo ${SITE.shortName}`} width="56" height="56" class="h-14 w-14 rounded-full border border-teal-700/50 object-contain p-1" />
+        <div class="font-display text-lg font-semibold leading-tight text-white">
+          UPTD Puskesmas<br />Tegowanu
+        </div>
+      </div>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed" data-i18n="footer.tagline">
+        Melayani masyarakat Kecamatan Tegowanu dan sekitarnya dengan sepenuh hati.
+      </p>
+      <div class="mt-5 flex items-center gap-3">
+        {socials.map((s) => (
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.key}
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-teal-700/50 text-teal-200 transition-colors hover:bg-mint hover:text-teal-950"
+          >
+            <Icon name={s.icon} size={18} />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h5 class="mb-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-mint" data-i18n="footer.nav">Navigasi Utama</h5>
+      <ul class="space-y-2.5 text-sm">
+        {nav.map((l) => (
+          <li>
+            <a href={l.href} class="text-teal-100/80 transition-colors hover:text-mint">
+              <span data-i18n={l.key}>{idText(l.key)}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h5 class="mb-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-mint" data-i18n="footer.public">Layanan Publik</h5>
+      <ul class="space-y-2.5 text-sm">
+        {publicLinks.map((l) => (
+          <li>
+            <a href={l.href} class="text-teal-100/80 transition-colors hover:text-mint">
+              <span data-i18n={l.key}>{idText(l.key)}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={waLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-5 inline-flex items-center gap-2 rounded-full bg-mint px-4 py-2 text-sm font-semibold text-teal-950 transition-colors hover:bg-mint-deep hover:text-white"
+      >
+        <Icon name="whatsapp" size={16} />
+        WhatsApp
+      </a>
+    </div>
+
+    <div>
+      <h5 class="mb-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-mint" data-i18n="footer.social">Media Sosial</h5>
+      <ul class="space-y-2.5 text-sm">
+        {socials.map((s) => (
+          <li>
+            <a href={s.href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-teal-100/80 transition-colors hover:text-mint">
+              <Icon name={s.icon} size={15} />
+              {s.key}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-5">
+        <LangSwitch />
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-teal-800/60">
+    <div class="wrap flex flex-col items-center justify-between gap-2 py-5 text-center font-mono text-[0.72rem] tracking-wide text-teal-200/70 sm:flex-row sm:text-left">
+      <span data-i18n="footer.legal">© 2026 UPTD Puskesmas Tegowanu — Dinas Kesehatan Kabupaten Grobogan</span>
+      <span data-i18n="footer.system">Sistem Informasi Terpadu</span>
+    </div>
+  </div>
+</footer>

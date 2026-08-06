@@ -1,0 +1,20 @@
+---
+import GalleryGrid from '@/components/sections/GalleryGrid';
+---
+
+<section id="galeri" data-spy="galeri" class="reveal section-pad">
+  <div class="wrap">
+    <div class="sec-head text-center">
+      <span class="eyebrow" data-i18n="gallery.eyebrow">Dokumentasi</span>
+      <h2 class="mx-auto mt-3 max-w-2xl font-display text-section font-bold text-teal-950" data-i18n="gallery.title">
+        Galeri Kegiatan
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-ink-soft" data-i18n="gallery.desc">
+        Potret pengabdian dan dedikasi kami kepada masyarakat Tegowanu.
+      </p>
+    </div>
+    <div class="mt-12">
+      <GalleryGrid client:idle />
+    </div>
+  </div>
+</section>

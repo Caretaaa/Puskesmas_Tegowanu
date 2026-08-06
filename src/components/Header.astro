@@ -1,0 +1,111 @@
+---
+import { SITE, waLink } from '@/lib/site';
+import { idText } from '@/lib/i18n-dicts';
+import Icon from '@/components/ui/Icon.astro';
+import LangSwitch from '@/components/LangSwitch.astro';
+import MobileNav from '@/components/MobileNav';
+
+interface Props {
+  navActive?: 'home' | 'profil' | 'layanan' | 'survey' | 'berita' | 'galeri' | 'kontak';
+}
+
+const { navActive } = Astro.props;
+
+const dropdowns = [
+  {
+    nav: 'tentang',
+    key: 'nav.profile',
+    active: navActive === 'profil',
+    items: [
+      { href: '/#profil', key: 'nav.profileDetail' },
+      { href: '/#pengaduan', key: 'nav.profileComplaint' },
+    ],
+  },
+  {
+    nav: 'layanan',
+    key: 'nav.services',
+    active: navActive === 'layanan',
+    items: [
+      { href: '/#layanan', key: 'nav.servicesPrograms', spy: 'layanan' },
+      { href: '/tarif', key: 'nav.servicesFees' },
+      { href: '/standar-layanan', key: 'nav.servicesStandards' },
+    ],
+  },
+];
+
+const flatLinks = [
+  { href: '/survey-kepuasan', key: 'nav.survey', active: navActive === 'survey' },
+  { href: '/#berita', key: 'nav.news', nav: 'berita', active: navActive === 'berita' },
+  { href: '/#galeri', key: 'nav.gallery', nav: 'galeri', active: navActive === 'galeri' },
+  { href: '/#kontak', key: 'nav.help', nav: 'kontak', active: navActive === 'kontak', strong: true },
+];
+---
+
+<div data-header class="sticky top-0 z-50 border-b border-line/80 bg-paper/85 backdrop-blur-md transition-shadow duration-300 [&.is-scrolled]:shadow-lift [&.is-scrolled]:bg-paper/95">
+  <div class="wrap flex items-center justify-between gap-4 py-3">
+    <a href="/" class="flex items-center gap-3" aria-label={SITE.shortName}>
+      <img src="/img/logo.webp" alt={`Logo ${SITE.shortName}`} width="132" height="52" class="h-11 w-auto" />
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
+      <a href="/#beranda" class="nav-link" data-nav="beranda">
+        <span data-i18n="nav.home">Beranda</span>
+      </a>
+
+      {dropdowns.map((dd) => (
+        <div class:list={['nav-dd group relative', dd.active ? 'is-active' : '']} data-nav={dd.nav}>
+          <a
+            href={dd.items[0].href}
+            class="nav-link flex items-center gap-1"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span data-i18n={dd.key}>{idText(dd.key)}</span>
+            <Icon name="chevron-down" size={14} class="transition-transform duration-200 group-hover:rotate-180" />
+          </a>
+          <div class="absolute left-0 top-full pt-3 opacity-0 invisible transition-all duration-200 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0">
+            <div class="w-60 rounded-2xl border border-line bg-white p-2 shadow-lift">
+              {
+                dd.items.map((item) => (
+                  <a
+                    href={item.href}
+                    data-nav={item.spy}
+                    class="block rounded-xl px-4 py-2.5 text-sm font-medium text-ink-soft transition-colors hover:bg-teal-50 hover:text-teal-900"
+                  >
+                    <span data-i18n={item.key}>{idText(item.key)}</span>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      ))}
+
+      {
+        flatLinks.map((l) => (
+          <a
+            href={l.href}
+            class:list={['nav-link', l.strong ? '!text-teal-700 font-bold' : '', l.active ? 'is-active' : '']}
+            data-nav={l.nav}
+          >
+            <span data-i18n={l.key}>{idText(l.key)}</span>
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a
+        href={waLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden items-center gap-2 rounded-full border-2 border-teal-800 px-4 py-2 text-sm font-semibold text-teal-900 transition-colors hover:bg-teal-900 hover:text-white md:inline-flex"
+      >
+        <Icon name="whatsapp" size={16} />
+        <span data-i18n="nav.whatsapp">WhatsApp</span>
+      </a>
+      <LangSwitch class="hidden lg:inline-flex" />
+      <MobileNav client:idle />
+    </div>
+  </div>
+</div>

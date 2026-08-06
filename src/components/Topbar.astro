@@ -1,0 +1,31 @@
+---
+import { SITE } from '@/lib/site';
+import Icon from '@/components/ui/Icon.astro';
+import LangSwitch from '@/components/LangSwitch.astro';
+---
+
+<div class="hidden border-b border-teal-800/40 bg-teal-950 text-teal-100 md:block">
+  <div class="wrap flex items-center justify-between gap-4 py-2 text-[0.8rem] leading-none">
+    <div class="flex min-w-0 items-center gap-5">
+      <span class="inline-flex items-center gap-1.5 truncate">
+        <Icon name="map-pin" size={14} class="shrink-0 text-mint" />
+        {SITE.address.street}, {SITE.address.village}, {SITE.address.regency}
+      </span>
+      <span class="hidden items-center gap-1.5 lg:inline-flex">
+        <Icon name="mail" size={14} class="shrink-0 text-mint" />
+        {SITE.email}
+      </span>
+      <span class="hidden items-center gap-1.5 lg:inline-flex">
+        <Icon name="phone" size={14} class="shrink-0 text-mint" />
+        {SITE.phone}
+      </span>
+    </div>
+    <div class="flex shrink-0 items-center gap-4">
+      <span class="inline-flex items-center gap-1.5 font-mono text-[0.72rem] font-semibold tracking-wide text-mint">
+        <Icon name="clock" size={13} class="shrink-0" />
+        <span data-i18n="topbar.hours">PONED 24 Jam</span>
+      </span>
+      <LangSwitch />
+    </div>
+  </div>
+</div>
