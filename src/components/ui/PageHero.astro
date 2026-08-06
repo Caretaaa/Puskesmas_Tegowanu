@@ -26,13 +26,13 @@ const { title, desc, titleI18n, descI18n } = Astro.props;
       </ol>
     </nav>
     <h1
-      class="max-w-3xl font-display text-3xl font-semibold text-teal-950 sm:text-4xl"
+      class="max-w-3xl font-display text-section font-bold text-balance text-teal-950"
       data-i18n={titleI18n}
       set:html={titleI18n ? idText(titleI18n) : title}
     ></h1>
     {
       desc && (
-        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft" data-i18n={descI18n}>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg" data-i18n={descI18n}>
           {descI18n ? idText(descI18n) : desc}
         </p>
       )

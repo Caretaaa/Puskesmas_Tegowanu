@@ -67,17 +67,21 @@ export default function AboutTabs() {
 
       <Tabs.Content value="profil" className="mt-8 outline-none">
         <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative" data-parallax data-parallax-speed="0.22">
+          <div className="relative">
             <div aria-hidden className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-mint/40 to-teal-100"></div>
-            <img
-              src="/img/profil.webp"
-              alt={t('about.imageAlt')}
-              width="600"
-              height="450"
-              loading="lazy"
-              decoding="async"
-              className="aspect-[4/3] w-full scale-[1.28] rounded-[1.6rem] border border-line object-cover shadow-card"
-            />
+            <div className="overflow-hidden rounded-[1.6rem] border border-line shadow-card">
+              <div className="relative h-full" data-parallax data-parallax-speed="0.22">
+                <img
+                  src="/img/profil.webp"
+                  alt={t('about.imageAlt')}
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/3] w-full scale-[1.45] object-cover"
+                />
+              </div>
+            </div>
           </div>
           <div>
             <p className="leading-relaxed text-ink-soft">{t('about.p1')}</p>
